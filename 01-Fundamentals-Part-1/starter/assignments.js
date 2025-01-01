@@ -5,8 +5,8 @@ Values and Variables﻿
 2. Log their values to the console.
  */
 // Values and Variables
-let country = "Nigeria";
-let continent = 'Africa';
+const country = "Nigeria";
+const continent = 'Africa';
 let population = 200;
 
 console.log(country);
@@ -19,6 +19,18 @@ console.log(population);
 
 2. Log the types of isIsland, population, country and language to the console.
  */
-let isIsland = true;
+const isIsland = true;
 let language;
 console.log(typeof isIsland, typeof population, typeof country, typeof language);
+// isIsland = false;
+
+// let, const and var
+/* 
+1. Set the value of language to the language spoken where you live (some countries have multiple languages, but just choose one).
+
+2. Think about which variables should be const variables (which values will never change, and which might change?). Then, change these variables to const.
+
+3. Try to change one of the changed variables now, and observe what happens.
+*/
+language = 'oegworok';
+console.log(language);
