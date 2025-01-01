@@ -75,10 +75,14 @@ console.log(typeof null); // object
 // let, const and var
 let age = 30;
 age = 31;
-
 const birthYear = 1991;
 // birthYear = 1990; // Uncaught TypeError: Assignment to constant variable.
+// const job; // Uncaught SyntaxError: Missing initializer in const declaration. 
+var job = 'programmer;'
+job = 'teacher';
 
+lastName = 'schmedtmann'; // Not recommended
+console.log(lastName); // schmedtmann
 
 
 
