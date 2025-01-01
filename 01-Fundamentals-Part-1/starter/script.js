@@ -73,8 +73,8 @@ console.log(typeof year); // number
 console.log(typeof null); // object
 
 // let, const and var
-let age = 30;
-age = 31;
+// let age = 30;
+// age = 31;
 // const birthYear = 1991;
 // birthYear = 1990; // Uncaught TypeError: Assignment to constant variable.
 // const job; // Uncaught SyntaxError: Missing initializer in const declaration. 
@@ -138,3 +138,26 @@ console.log(jonasNew);
 
 console.log('String with \n\
     multiple lines');
+
+// Taking decisions: if / else Statements
+const age = 15;
+const isOldEnough = age >= 18;
+
+if (isOldEnough) {
+    console.log('Sarah can start driving license 🚗');
+} else {
+    const yearsLeft = 18 - age;
+    console.log(`Sarah is too young. wait another ${yearsLeft} years :)`);
+}
+
+const birthYearr = 1991;
+let centuary;
+
+if (birthYearr <= 2000) {
+    centuary = 20;
+    console.log('You are a millenial');
+} else {
+    centuary = 21;
+    console.log('You are not a millenial');
+}
+console.log(centuary);
