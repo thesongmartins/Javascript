@@ -63,3 +63,9 @@ console.log(population < averagePopulation); // true
 const description = country + ' is in ' + continent + ', and its ' + population + ' million people speak ' + language;
 console.log(description); // Nigeria is in Africa, and its 201 million people speak oegworok
 
+// Strings and Template Literals
+/*
+1. Recreate the description variable from the last assignment, this time using the template literal syntax.
+ */
+const description2 = `${country} is in ${continent} and its ${population} million people speak ${language}`;
+console.log(description2); // Nigeria is in Africa and its 33000000, and its 201 million people speak oegworok.

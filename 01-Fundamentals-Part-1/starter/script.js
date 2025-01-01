@@ -75,11 +75,11 @@ console.log(typeof null); // object
 // let, const and var
 let age = 30;
 age = 31;
-const birthYear = 1991;
+// const birthYear = 1991;
 // birthYear = 1990; // Uncaught TypeError: Assignment to constant variable.
 // const job; // Uncaught SyntaxError: Missing initializer in const declaration. 
-var job = 'programmer;'
-job = 'teacher';
+// var job = 'programmer;'
+// job = 'teacher';
 
 // lastName = 'schmedtmann'; // Not recommended
 // console.log(lastName); // schmedtmann
@@ -93,9 +93,9 @@ const ageSarah = now - 2018;
 console.log(ageJonas, ageSarah); // 46 19
 console.log(ageJonas * 2, ageJonas / 10, 2 ** 3); // 92 4.6 8: 2 * 2 * 2  
 
-const firstName = 'Jonas';
+// const firstName = 'Jonas';
 const lastName = 'Schmedtmann';
-console.log(firstName + " " + lastName); // Jonas Schmedtmann
+// console.log(firstName + " " + lastName); // Jonas Schmedtmann
 
 // Assignment Operators
 let x = 10 + 5; // 15
@@ -125,4 +125,16 @@ console.log(z, y); // 10 10
 const averageAge = (ageJonas + ageSarah) / 2;
 console.log(ageJonas, ageSarah, averageAge); // 46 19 32.5
 
+// Strings and Template Literals
+const firstName = 'Jonas';
+const jobb = 'teacher';
+const birthYear = 1991;
 
+const jonas = "I'm " + firstName + ', a ' + (now - birthYear) + ' years old ' + jobb + '!';
+console.log(jonas);
+
+const jonasNew = `I'm ${firstName}, a ${now - birthYear} years old ${jobb}!`;
+console.log(jonasNew);
+
+console.log('String with \n\
+    multiple lines');
