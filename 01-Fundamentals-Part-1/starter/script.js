@@ -81,9 +81,48 @@ const birthYear = 1991;
 var job = 'programmer;'
 job = 'teacher';
 
-lastName = 'schmedtmann'; // Not recommended
-console.log(lastName); // schmedtmann
+// lastName = 'schmedtmann'; // Not recommended
+// console.log(lastName); // schmedtmann
 
+// Basic Operators
+// An operator allows us to transform or combine values. For example, the + operator adds two numbers together.  
+// Arithmetic Operators
+const now = 2037;
+const ageJonas = now - 1991;
+const ageSarah = now - 2018;
+console.log(ageJonas, ageSarah); // 46 19
+console.log(ageJonas * 2, ageJonas / 10, 2 ** 3); // 92 4.6 8: 2 * 2 * 2  
 
+const firstName = 'Jonas';
+const lastName = 'Schmedtmann';
+console.log(firstName + " " + lastName); // Jonas Schmedtmann
+
+// Assignment Operators
+let x = 10 + 5; // 15
+x += 10; // x = x + 10 = 25
+x *= 4; // x = x * 4 = 100
+x++; // x = x + 1 = 101
+x--; // x = x - 1 = 100
+x--; // x = x - 1 = 99
+console.log(x); // 99
+
+// Comparison Operators
+// we use comparison operators to compare values. For example, the > operator checks if the left value is greater than the right one.
+console.log(ageJonas > ageSarah); // true
+console.log(ageSarah >= 18); // true
+const isFullAge = ageSarah >= 18;
+console.log(now - 1991 > now - 2018); // true
+
+// Operator Precedence
+// Operator precedence determines the order in which operators are executed. For example, multiplication is executed before addition. 
+// const now = 2037;
+// const ageJonas = now - 1991;
+// const ageSarah = now - 2018;
+console.log(now - 1991 > now - 2018); // true
+let z, y;
+z = y = 25 - 10 - 5; // z = y = 10, z = 10, y = 10
+console.log(z, y); // 10 10
+const averageAge = (ageJonas + ageSarah) / 2;
+console.log(ageJonas, ageSarah, averageAge); // 46 19 32.5
 
 
