@@ -61,4 +61,5 @@ const averagePopulation = 33000000;
 console.log(population < averagePopulation); // true
 
 const description = country + ' is in ' + continent + ', and its ' + population + ' million people speak ' + language;
-console.log(description);
+console.log(description); // Nigeria is in Africa, and its 201 million people speak oegworok
+
