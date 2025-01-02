@@ -161,3 +161,25 @@ if (birthYearr <= 2000) {
     console.log('You are not a millenial');
 }
 console.log(centuary);
+
+// Type Conversion and Coercion
+// Type Conversion: Manually convert from one type to another. For example, from a number to a string.
+// Type Coercion: JavaScript automatically converts types behind the scenes for us.
+// Type Conversion 
+const inputYear = '1991';
+console.log(Number(inputYear) + 18); // 2009
+console.log(Number(inputYear), inputYear); // 1991 '1991'
+
+console.log(Number('Jonas')); // NaN
+console.log(typeof NaN); // number  
+
+// console.log(string(23), 23); // 23 '23'
+
+// Type Coercion
+console.log('I am ' + 23 + ' years old'); // I am 23 years old
+console.log('23' - '10' - 3); // 10
+
+let n = '1' + 1;
+n = n - 1;
+console.log(n); // 10
+
