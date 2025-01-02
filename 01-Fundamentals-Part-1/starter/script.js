@@ -216,16 +216,48 @@ console.log(18 === 18); // true
 console.log(18 === '18'); // false
 
 // const favorite = prompt("What's your favorite number?");
-console.log(favorite);
-console.log(typeof favorite);
+// console.log(favorite);
+// console.log(typeof favorite);
 
-if (favorite === 23) { // '23' == 23
-    console.log('Cool! 23 is an amazing number!');
-} else if (favorite === 7) {
-    console.log('7 is also a cool number');
+// if (favorite === 23) { // '23' == 23
+//     console.log('Cool! 23 is an amazing number!');
+// } else if (favorite === 7) {
+//     console.log('7 is also a cool number');
+// } else {
+//     console.log('Number is not 23 or 7');
+// }
+
+// Basic boolean logic: AND, OR and NOT
+
+// Logical Operators
+const hasDriversLicense = true; // A
+const hasGoodVision = true; // B
+
+console.log(hasDriversLicense && hasGoodVision);
+console.log(hasDriversLicense || hasGoodVision);
+
+const shouldDrive = hasDriversLicense && hasGoodVision;
+
+// if (hasDriversLicense && hasGoodVision) {
+//     console.log('Sarah is able to drive!');
+// } else {
+//     console.log("Someone else should drive...");
+// }
+
+const isTired = true; // C
+console.log(hasDriversLicense || hasGoodVision || isTired);
+console.log(hasDriversLicense && hasGoodVision && isTired);
+
+
+if (hasDriversLicense && hasGoodVision && !isTired) {
+    console.log('Sarah is able to drive!');
 } else {
-    console.log('Number is not 23 or 7');
+    console.log("Someone else should drive...");
 }
+
+
+
+
 
 
 
