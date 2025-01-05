@@ -93,23 +93,23 @@ console.log(fruitProcessor(2, 3));
 // console.log(yearsUntilRetirements(1950, 'Mike'));
 
 // Introduction to Arrays
-const friends = ['Mark', 'Jonas', 'Peter'];
-console.log(friends);
+// const friends = ['Mark', 'Jonas', 'Peter'];
+// console.log(friends);
 
 // const years = new Array(1991, 1984, 2008, 2020);
 // console.log(years);
 
-console.log(friends[0]);
-console.log(friends.length);
-console.log(friends[friends.length - 1]);
+// console.log(friends[0]);
+// console.log(friends.length);
+// console.log(friends[friends.length - 1]);
 
-friends[2] = 'Jay';
-console.log(friends);
+// friends[2] = 'Jay';
+// console.log(friends);
 
-const firstName = 'Jonas';
-const jonas = [firstName, 'Schmedtmann', 2037 - 1991, 'teacher', friends];
-console.log(jonas);
-console.log(jonas.length);
+// const firstName = 'Jonas';
+// const jonas = [firstName, 'Schmedtmann', 2037 - 1991, 'teacher', friends];
+// console.log(jonas);
+// console.log(jonas.length);
 
 //Exercise
 const calcAge = function (birthYeah) {
@@ -123,7 +123,33 @@ const age11 = calcAge(years[0]);
 const age12 = calcAge(years[years.length - 1]);
 console.log(age11, age12);
 
-// 
+// Basic Array Operations(Methods)
+const friends = ['Mark', 'Jonas', 'Peter'];
+const newLength = friends.push('John'); // Push Method, adds element to the end of array
+console.log(friends);
+console.log(newLength);
+
+friends.unshift('Frances'); // Adds element at the beginning of an array.
+console.log(friends);
+
+friends.pop(); //removes last element of an array
+const popped = friends.pop();
+console.log(friends);
+console.log(popped);
+
+friends.shift(); // removes first element of an array.
+console.log(friends);
+
+console.log(friends.indexOf('Jonas')); // checks for the index of an array value.
+
+friends.push(23);
+console.log(friends.includes('Jonas')); // checks if a value of the array is available in the array.
+console.log(friends.includes(23));
+
+
+
+
+
 
 
 
