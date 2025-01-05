@@ -146,6 +146,78 @@ friends.push(23);
 console.log(friends.includes('Jonas')); // checks if a value of the array is available in the array.
 console.log(friends.includes(23));
 
+// Introduction to Objects 
+// const jonas = {
+//     firstName: 'Jonas',
+//     lastName: 'Schmedtmann',
+//     age: 2037 - 1991,
+//     job: 'Teacher',
+//     friendss: ['Mercy', 'Kamzy', 'Emma']
+// }
+// console.log(jonas);
+
+// const newObj = new Object({ lastName: 'Akila', }
+// )
+// console.log(newObj);
+
+// // Dot Vs Bracket Notation
+// console.log(jonas.lastName);
+// console.log(jonas['lastName']);
+
+// const namekey = 'Name';
+// console.log(jonas['first' + namekey]);
+// console.log(jonas['last' + namekey]);
+
+// const interestedIn = prompt('What do you want to know about Jonas? Choose between firstName, lastName, agee, job, and friends');
+// console.log(jonas[interestedIn]);
+
+// if (jonas[interestedIn]) {
+//     console.log(jonas[interestedIn])
+// } else {
+//     console.log('Wrong Request');
+// }
+
+// jonas.location = 'Nigeria';
+// jonas['twitter'] = '@jonasschmedtmann';
+// console.log(jonas);
+
+// Challenge
+// Jonas has 3 friends, and his best friend is called Mercy
+// console.log(`${jonas.firstName}  has ${jonas.friendss.length} friends, and his best friend is called ${jonas.friendss[0]}`);
+// console.log(jonas.firstName + ' has ' + jonas.friendss.length + ' ' + 'friends and his best friend is called' + " " + jonas.friendss[0]);
+
+// Objects Methods.
+const jonas = {
+    firstName: 'Jonas',
+    lastName: 'Schmedtmann',
+    age: 1991,
+    job: 'Teacher',
+    friendss: ['Mercy', 'Kamzy', 'Emma'],
+    hasDriversLicense: true,
+
+    calccAge: function () {
+        console.log(this);
+        return 2037 - this.age;
+    },
+    getSummary: function () {
+        return `${this.firstName} is a ${this.calccAge()}-year old ${this.job}, he has ${this.hasDriversLicense ? 'a' : 'no'} drivers licence.`
+    }
+    // calccAge: function (birthYearr) {
+    //     return 2037 - birthYearr;
+    // }
+}
+    ;
+console.log(jonas.calccAge());
+// console.log(jonas['calccAge'](1991));
+
+// Challenge
+// Jonas is a 46 year old teacher, and he has a drivers licence.
+console.log(jonas.getSummary());
+
+
+
+
+
 
 
 
