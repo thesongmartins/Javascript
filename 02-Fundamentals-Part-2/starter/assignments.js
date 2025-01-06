@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  1. Write a function called describeCountry which takes three parameters: country, population and capitalCity. Based on this input, the function returns a string with this format: 'Finland has 6 million people and its capital city is Helsinki'.
@@ -7,14 +7,14 @@
 */
 
 function describeCountry(country, population, capitalCity) {
-    const countries = `${country} has ${population} million people and it's capital city is ${capitalCity}.`;
-    return countries;
+  const countries = `${country} has ${population} million people and it's capital city is ${capitalCity}.`;
+  return countries;
 }
-const consoleOut = describeCountry('Finland', 6, 'Helsinki');
+const consoleOut = describeCountry("Finland", 6, "Helsinki");
 console.log(consoleOut);
-const nigeria = describeCountry("Nigeria", 200, 'Abuja');
-const usa = describeCountry("United States", 334.9, 'Washington, D.C')
-const russia = describeCountry("Russia", 143.8, 'Moscow');
+const nigeria = describeCountry("Nigeria", 200, "Abuja");
+const usa = describeCountry("United States", 334.9, "Washington, D.C");
+const russia = describeCountry("Russia", 143.8, "Moscow");
 
 console.log(nigeria);
 console.log(usa);
@@ -33,11 +33,11 @@ console.log(russia);
 
  */
 function percentageOfWorld1(population) {
-    return (population / 7900) * 100;
+  return (population / 7900) * 100;
 }
 
 const percentageOfWorld2 = function (population) {
-    return (population / 7900) * 100;
+  return (population / 7900) * 100;
 };
 
 const percPortugal1 = percentageOfWorld1(10);
@@ -50,7 +50,7 @@ console.log(percPortugal1, percChina1, percUSA1);
 /*
  1. Recreate the last assignment, but this time create an arrow function called percentageOfWorld3.
 */
-const percentageOfWorld3 = population => (population / 7900) * 100;
+const percentageOfWorld3 = (population) => (population / 7900) * 100;
 const percPortugal3 = percentageOfWorld3(10);
 const percChina3 = percentageOfWorld3(1441);
 const percUSA3 = percentageOfWorld3(332);
@@ -67,10 +67,10 @@ console.log(percPortugal3, percChina3, percUSA3);
 */
 
 const describePopulation = function (country, population) {
-    const percentage = percentageOfWorld1(population);
-    return `${country} has ${population} million people, which is about ${percentage} % of the world.`;
-}
-console.log(describePopulation('China', 1441));
+  const percentage = percentageOfWorld1(population);
+  return `${country} has ${population} million people, which is about ${percentage} % of the world.`;
+};
+console.log(describePopulation("China", 1441));
 
 // const describePopulation = function (country, population) {
 //     const percentage = percentageOfWorld1(population);
@@ -96,10 +96,10 @@ console.log(populations);
 console.log(populations.length === 4);
 
 const percentages = [
-    percentageOfWorld1(200),
-    percentageOfWorld1(300),
-    percentageOfWorld1(400),
-    percentageOfWorld1(500)
+  percentageOfWorld1(200),
+  percentageOfWorld1(300),
+  percentageOfWorld1(400),
+  percentageOfWorld1(500),
 ];
 console.log(percentages);
 
@@ -115,7 +115,45 @@ If the neighbours array does not include the country 'Germany', log to the conso
 
 Change the name of one of your neighbouring countries. To do that, find the index of the country in the neighbours array, and then use that index to change the array at that index position. For example, you can search for 'Sweden' in the array, and then replace it with 'Republic of Sweden'.
  */
+const neighbours = ["Norway", "Sweden", "Russia"];
 
+neighbours.push("Utopia");
+console.log(neighbours);
+
+neighbours.pop();
+console.log(neighbours);
+
+if (!neighbours.includes("Germany")) {
+  console.log("Probably not a central European country :D");
+}
+
+neighbours[neighbours.indexOf("Sweden")] = "Republic of Sweden;";
+console.log(neighbours);
 
 // Introduction to Objects
+const myCountry = {
+  country: "Nigeria",
+  capital: "Abuja",
+  language: "Oegworok",
+  population: 200,
+  neighbours: ["Chad", "Cameroon"],
+  describe: function () {
+    console.log(`${this.country} has ${this.population} million ${this.language}-speaking people, ${this.neighbours.length} neighbouring countries and a capital called ${this.capital}.
+        `);
+  },
+  checkIsland: function () {
+    this.isIsland = this.neighbours.length === 0 ? true : false;
+  },
+};
+myCountry.describe();
+console.log(`${myCountry.country} has ${myCountry.population} million ${myCountry.language}-speaking people, ${myCountry.neighbours.length} neighbouring countries and a capital called ${myCountry.capital}.
+`);
+myCountry.population += 2;
+myCountry["population"] -= 2;
+console.log(myCountry);
 
+// Iteration: The for loop
+for (let number = 1; number <= 50; number++) {
+  console.log(`Voter number ${number} is currently voting.`);
+}
+console.log();
