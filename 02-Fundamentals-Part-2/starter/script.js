@@ -214,6 +214,13 @@ console.log(jonas.calccAge());
 // Jonas is a 46 year old teacher, and he has a drivers licence.
 console.log(jonas.getSummary());
 
+// Iteration: The for Loops
+
+// for loop keeps running when coditon is TRUE
+for (let rep = 1; rep < 10; rep++){
+    console.log(`lifting weights repetition ${rep}`);
+}
+
 
 
 
