@@ -296,3 +296,4 @@ while (dice !== 6) {
     console.log(`Loop about to end!`);
   }
 }
+// End of the section.
