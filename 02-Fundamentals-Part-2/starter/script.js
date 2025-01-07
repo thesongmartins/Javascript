@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 // let hasDriversLicense = false;
 // const passTest = true;
@@ -12,15 +12,15 @@
 // Functions
 
 function logger() {
-    console.log('My name is Jonas');
+  console.log("My name is Jonas");
 }
 // Calling /running / invoking the function
 logger();
 
 function fruitProcessor(apples, oranges) {
-    // console.log(apples, oranges);
-    const juice = `Juice with ${apples} apples and ${oranges} oranges.`;
-    return juice;
+  // console.log(apples, oranges);
+  const juice = `Juice with ${apples} apples and ${oranges} oranges.`;
+  return juice;
 }
 fruitProcessor(2, 4);
 // console.log(fruitProcessor(2, 4));
@@ -32,44 +32,44 @@ console.log(appleOrangeJuice);
 
 // Function Declarations Vs Expressions
 function calAge1(birthYear) {
-    const age = 2037 - birthYear;
-    return age;
+  const age = 2037 - birthYear;
+  return age;
 } // Function declaration
 
 const age1 = calAge1(1991);
 // console.log(age1);
 
 const calAge2 = function (birthYear) {
-    return 2037 - 1991;
-} //Function expression
+  return 2037 - 1991;
+}; //Function expression
 
 const age2 = calAge2(1991);
 console.log(age1, age2);
 
 // Arrow Functions
-const calAge3 = birthYear => 2037 - birthYear;
+const calAge3 = (birthYear) => 2037 - birthYear;
 const age3 = calAge3(1991);
 console.log(age3);
 
 const yearsUntilRetirement = (birthYear, firstName) => {
-    const age = 2037 - birthYear;
-    const retirement = 65 - age;
-    // return retirement;
-    return `${firstName} retires in ${retirement} years`;
-}
-console.log(yearsUntilRetirement(1991, 'Jonas'));
+  const age = 2037 - birthYear;
+  const retirement = 65 - age;
+  // return retirement;
+  return `${firstName} retires in ${retirement} years`;
+};
+console.log(yearsUntilRetirement(1991, "Jonas"));
 
 // Functions calling other functions
 function cutFruitPieces(fruit) {
-    return fruit * 4;
+  return fruit * 4;
 }
 
 function fruitProcessor(apples, oranges) {
-    // console.log(apples, oranges);
-    const applePieces = cutFruitPieces(apples);
-    const orangePieces = cutFruitPieces(oranges);
-    const juice = `Juice with ${applePieces} pieces of apples and ${orangePieces} pieces of oranges.`;
-    return juice;
+  // console.log(apples, oranges);
+  const applePieces = cutFruitPieces(apples);
+  const orangePieces = cutFruitPieces(oranges);
+  const juice = `Juice with ${applePieces} pieces of apples and ${orangePieces} pieces of oranges.`;
+  return juice;
 }
 console.log(fruitProcessor(2, 3));
 
@@ -113,8 +113,8 @@ console.log(fruitProcessor(2, 3));
 
 //Exercise
 const calcAge = function (birthYeah) {
-    return 2037 - birthYeah;
-}
+  return 2037 - birthYeah;
+};
 
 const years = [1990, 1967, 2002, 2010, 2018];
 
@@ -124,12 +124,12 @@ const age12 = calcAge(years[years.length - 1]);
 console.log(age11, age12);
 
 // Basic Array Operations(Methods)
-const friends = ['Mark', 'Jonas', 'Peter'];
-const newLength = friends.push('John'); // Push Method, adds element to the end of array
+const friends = ["Mark", "Jonas", "Peter"];
+const newLength = friends.push("John"); // Push Method, adds element to the end of array
 console.log(friends);
 console.log(newLength);
 
-friends.unshift('Frances'); // Adds element at the beginning of an array.
+friends.unshift("Frances"); // Adds element at the beginning of an array.
 console.log(friends);
 
 friends.pop(); //removes last element of an array
@@ -140,13 +140,13 @@ console.log(popped);
 friends.shift(); // removes first element of an array.
 console.log(friends);
 
-console.log(friends.indexOf('Jonas')); // checks for the index of an array value.
+console.log(friends.indexOf("Jonas")); // checks for the index of an array value.
 
 friends.push(23);
-console.log(friends.includes('Jonas')); // checks if a value of the array is available in the array.
+console.log(friends.includes("Jonas")); // checks if a value of the array is available in the array.
 console.log(friends.includes(23));
 
-// Introduction to Objects 
+// Introduction to Objects
 // const jonas = {
 //     firstName: 'Jonas',
 //     lastName: 'Schmedtmann',
@@ -188,25 +188,26 @@ console.log(friends.includes(23));
 
 // Objects Methods.
 const jonas = {
-    firstName: 'Jonas',
-    lastName: 'Schmedtmann',
-    age: 1991,
-    job: 'Teacher',
-    friendss: ['Mercy', 'Kamzy', 'Emma'],
-    hasDriversLicense: true,
+  firstName: "Jonas",
+  lastName: "Schmedtmann",
+  age: 1991,
+  job: "Teacher",
+  friendss: ["Mercy", "Kamzy", "Emma"],
+  hasDriversLicense: true,
 
-    calccAge: function () {
-        console.log(this);
-        return 2037 - this.age;
-    },
-    getSummary: function () {
-        return `${this.firstName} is a ${this.calccAge()}-year old ${this.job}, he has ${this.hasDriversLicense ? 'a' : 'no'} drivers licence.`
-    }
-    // calccAge: function (birthYearr) {
-    //     return 2037 - birthYearr;
-    // }
-}
-    ;
+  calccAge: function () {
+    console.log(this);
+    return 2037 - this.age;
+  },
+  getSummary: function () {
+    return `${this.firstName} is a ${this.calccAge()}-year old ${
+      this.job
+    }, he has ${this.hasDriversLicense ? "a" : "no"} drivers licence.`;
+  },
+  // calccAge: function (birthYearr) {
+  //     return 2037 - birthYearr;
+  // }
+};
 console.log(jonas.calccAge());
 // console.log(jonas['calccAge'](1991));
 
@@ -217,28 +218,81 @@ console.log(jonas.getSummary());
 // Iteration: The for Loops
 
 // for loop keeps running when coditon is TRUE
-for (let rep = 1; rep < 10; rep++){
-    console.log(`lifting weights repetition ${rep}`);
+for (let rep = 1; rep < 10; rep++) {
+  console.log(`lifting weights repetition ${rep}`);
 }
 
+// Looping  arrays, breaking and continue
+const arrayIsNew = [
+  "Jonas",
+  "Schmedtmann",
+  2037 - 1991,
+  "Teacher",
+  ["Micheal", "Peter", "Steven"],
+  true,
+];
 
+const types = [];
 
+for (let i = 0; i < arrayIsNew.length; i++) {
+  // Reaading from Jonas Array
+  console.log(arrayIsNew[i], typeof arrayIsNew[i]);
 
+  // Filling types of array
+  types.push(typeof arrayIsNew[i]);
+}
+console.log(types);
 
+const yearsss = [1991, 2007, 1969, 2020];
+const ages = [];
+for (let i = 0; i < yearsss.length; i++) {
+  ages.push(2037 - yearsss[i]);
+}
+console.log(ages);
 
+// Continue and break
+for (let i = 0; i < arrayIsNew.length; i++) {
+  if (typeof arrayIsNew[i] !== "string") continue;
+  console.log(arrayIsNew[i], typeof arrayIsNew[i]);
+}
 
+// Break
+for (let i = 0; i < arrayIsNew.length; i++) {
+  if (typeof arrayIsNew[i] !== "number") break;
+  console.log(arrayIsNew[i], typeof arrayIsNew[i]);
+}
 
+// looping backwards and loops in loops
+for (let i = arrayIsNew.length - 1; i >= 0; i--) {
+  console.log(i, arrayIsNew[i]);
+}
 
+for (let exercise = 1; exercise < 4; exercise++) {
+  console.log(`-------- Starting Exercise ${exercise}`);
 
+  for (let rep = 1; rep < 6; rep++) {
+    console.log(`Lifting weight repetition ${rep}`);
+  }
+}
 
+// While loop
+// for (let rep = 1; rep < 10; rep++) {
+//   console.log(`lifting weights repetition ${rep}`);
+// }
 
+let rep = 1;
+while (rep <= 10) {
+  // console.log(`While: lifting weights repetition ${rep}`);
+  rep++;
+}
 
+let dice = Math.trunc(Math.random() * 6) + 1;
+console.log(dice);
 
-
-
-
-
-
-
-
-
+while (dice !== 6) {
+  console.log(`You rolled a ${dice}`);
+  dice = Math.trunc(Math.random() * 6) + 1;
+  if (dice === 6) {
+    console.log(`Loop about to end!`);
+  }
+}
