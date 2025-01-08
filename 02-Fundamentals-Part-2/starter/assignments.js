@@ -91,9 +91,9 @@ console.log(describePopulation("China", 1441));
     3. Create an array called percentages containing the percentages of the world population for these 4 population values. Use the function percentageOfWorld1 that you created earlier to compute the 4 percentage values.
  */
 
-const populations = [200, 300, 400, 500];
-console.log(populations);
-console.log(populations.length === 4);
+// const populations = [200, 300, 400, 500];
+// console.log(populations);
+// console.log(populations.length === 4);
 
 const percentages = [
   percentageOfWorld1(200),
@@ -157,3 +157,39 @@ for (let number = 1; number <= 50; number++) {
   console.log(`Voter number ${number} is currently voting.`);
 }
 console.log();
+
+// Looping arrays, Breaking and continuing
+const populations = [10, 1441, 332, 83];
+const percentages2 = [];
+
+for (let i = 0; i < populations.length; i++) {
+  const percent = percentageOfWorld1(populations[i]);
+  percentages2.push(percent);
+}
+
+console.log(percentages2);
+
+// Looping Backwards and Loops in Loops
+const listOfNeighbours = [
+  ["Canada", "Mexico"],
+  ["Spain"],
+  ["Norway", "Sweden", "Russia"],
+];
+
+for (let i = 0; i < listOfNeighbours.length; i++) {
+  for (let l = 0; l < listOfNeighbours[i].length; l++) {
+    console.log(`Neighbours: ${listOfNeighbours[i][l]}`);
+  }
+}
+
+// While loop
+const percentages3 = [];
+
+let i = 0;
+while (i < populations.length) {
+  const percentt = percentageOfWorld1(populations[i]);
+  percentages3.push(percentt);
+  i++;
+}
+
+console.log(percentages3);
