@@ -42,6 +42,7 @@ const measureKelvin = function () {
   const measurements = {
     type: "temp",
     unit: "celsius",
+    //  Fix
     value: Number(prompt("Degrees celsius")),
   };
   // Find bug.
