@@ -71,3 +71,5 @@ const printForecast = function (arr) {
   console.log(str);
 };
 printForecast(data1);
+
+// Solving with AI task
