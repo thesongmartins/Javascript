@@ -1,28 +1,40 @@
 'use strict';
+const bodyEl = document.querySelector('body');
+const guessEl = document.querySelector('.guess');
+const checkEl = document.querySelector('.check');
+const numberEl = document.querySelector('.number');
+const messageEl = document.querySelector('.message');
+const scoreEl = document.querySelector('.score');
 
 const secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
+const lostGame = function () {
+  bodyEl.style.backgroundColor = 'red';
+};
 
-document.querySelector('.number').textContent = secretNumber;
+numberEl.textContent = secretNumber;
 
-document.querySelector('.check').addEventListener('click', function () {
-  const guess = Number(document.querySelector('.guess').value);
+checkEl.addEventListener('click', function () {
+  const guess = Number(guessEl.value);
   console.log(guess, typeof guess);
   // When there is no input
   if (!guess) {
-    document.querySelector('.message').textContent = 'No Number!';
+    messageEl.textContent = 'No Number!';
     // When player wins
   } else if (guess === secretNumber) {
-    document.querySelector('.message').textContent = 'Correct Number!';
+    messageEl.textContent = 'Correct Number!';
+    bodyEl.style.backgroundColor = 'green';
+    numberEl.style.width = '30rem';
     // When guess is too High
   } else if (guess > secretNumber) {
     if (score > 1) {
-      document.querySelector('.message').textContent = 'Too High';
+      messageEl.textContent = 'Too High';
       score--;
-      document.querySelector('.score').textContent = score;
+      scoreEl.textContent = score;
     } else {
-      document.querySelector('.message').textContent = 'You lost the game';
-      document.querySelector('.score').textContent = 0;
+      messageEl.textContent = 'You lost the game';
+      scoreEl.textContent = 0;
+      lostGame();
     }
     // When guess is too low
   } else if (guess < secretNumber) {
@@ -30,12 +42,13 @@ document.querySelector('.check').addEventListener('click', function () {
     // score--;
     // document.querySelector('.score').textContent = score;
     if (score > 1) {
-      document.querySelector('.message').textContent = 'Too low';
+      messageEl.textContent = 'Too low';
       score--;
-      document.querySelector('.score').textContent = score;
+      scoreEl.textContent = score;
     } else {
-      document.querySelector('.message').textContent = 'You lost the game';
-      document.querySelector('.score').textContent = 0;
+      messageEl.textContent = 'You lost the game';
+      scoreEl.textContent = 0;
+      lostGame();
     }
   }
 });
