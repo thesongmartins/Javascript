@@ -6,9 +6,11 @@ const numberEl = document.querySelector('.number');
 const messageEl = document.querySelector('.message');
 const scoreEl = document.querySelector('.score');
 const againEl = document.querySelector('.again');
+const highScoreEl = document.querySelector('.highscore');
 
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
+let highScore = 0;
 const lostGame = function () {
   bodyEl.style.backgroundColor = 'red';
 };
@@ -26,6 +28,10 @@ checkEl.addEventListener('click', function () {
     numberEl.textContent = secretNumber;
     bodyEl.style.backgroundColor = 'green';
     numberEl.style.width = '30rem';
+    if (score > highScore) {
+      highScore = score;
+      highScoreEl.textContent = highScore;
+    }
     // When guess is too High
   } else if (guess > secretNumber) {
     if (score > 1) {
