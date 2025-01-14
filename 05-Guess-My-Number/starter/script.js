@@ -14,6 +14,9 @@ let highScore = 0;
 const lostGame = function () {
   bodyEl.style.backgroundColor = 'red';
 };
+const displayMessage = function (message) {
+  messageEl.textContent = message;
+};
 
 checkEl.addEventListener('click', function () {
   const guess = Number(guessEl.value);
@@ -21,10 +24,10 @@ checkEl.addEventListener('click', function () {
 
   // When there is no input
   if (!guess) {
-    messageEl.textContent = 'No Number!';
+    displayMessage('No Number!');
     // When player wins
   } else if (guess === secretNumber) {
-    messageEl.textContent = 'Correct Number!';
+    displayMessage('Correct Number!');
     numberEl.textContent = secretNumber;
     bodyEl.style.backgroundColor = 'green';
     numberEl.style.width = '30rem';
@@ -32,28 +35,13 @@ checkEl.addEventListener('click', function () {
       highScore = score;
       highScoreEl.textContent = highScore;
     }
-    // When guess is too High
-  } else if (guess > secretNumber) {
+  } else if (guess !== secretNumber) {
     if (score > 1) {
-      messageEl.textContent = 'Too High';
+      displayMessage(guess > secretNumber ? 'Too High' : 'Too low');
       score--;
       scoreEl.textContent = score;
     } else {
-      messageEl.textContent = 'You lost the game';
-      scoreEl.textContent = 0;
-      lostGame();
-    }
-    // When guess is too low
-  } else if (guess < secretNumber) {
-    // document.querySelector('.message').textContent = 'Too low';
-    // score--;
-    // document.querySelector('.score').textContent = score;
-    if (score > 1) {
-      messageEl.textContent = 'Too low';
-      score--;
-      scoreEl.textContent = score;
-    } else {
-      messageEl.textContent = 'You lost the game';
+      displayMessage('You lost the game');
       scoreEl.textContent = 0;
       lostGame();
     }
