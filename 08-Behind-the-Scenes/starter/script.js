@@ -66,32 +66,67 @@ const z = 3;
 console.log(x === window.x);
 
 // this Keyword
-const calcAge = function (birthYear) {
-  console.log(2037 - birthYear);
-  console.log(this);
-};
-calcAge(1991);
+// const calcAge = function (birthYear) {
+//   console.log(2037 - birthYear);
+//   console.log(this);
+// };
+// calcAge(1991);
 
-const calcAgeArrow = birthYear => {
-  console.log(2037 - birthYear);
-  console.log(this);
-};
-calcAgeArrow(1980);
+// const calcAgeArrow = birthYear => {
+//   console.log(2037 - birthYear);
+//   console.log(this);
+// };
+// calcAgeArrow(1980);
+
+// const jonas = {
+//   year: 1991,
+//   calcAge: function () {
+//     console.log(this);
+//     console.log(2037 - this.year);
+//   },
+// };
+// jonas.calcAge();
+
+// const matilda = {
+//   year: 2017,
+// };
+// matilda.calcAge = jonas.calcAge;
+// matilda.calcAge();
+
+// const f = jonas.calcAge;
+// console.log(f);
+
+// Regualar functions Vs Function Expressions
 
 const jonas = {
+  firstName: 'Jonas',
   year: 1991,
   calcAge: function () {
-    console.log(this);
+    // console.log(this);
     console.log(2037 - this.year);
+    const self = this; // self or that
+    const isMillenial = function () {
+      //   console.log(this.year >= 1981 && this.year <= 1996);
+
+      console.log(self.year >= 1981 && self.year <= 1996);
+    };
+    isMillenial();
+  },
+  greet: () => {
+    console.log(`Hey ${this.firstName}`);
   },
 };
+jonas.greet();
 jonas.calcAge();
 
-const matilda = {
-  year: 2017,
+// Arguments keyword
+const addExpr = function (a, b) {
+  console.log(arguments);
+  return a + b;
 };
-matilda.calcAge = jonas.calcAge;
-matilda.calcAge();
+addExpr(2, 5);
 
-const f = jonas.calcAge;
-// console.log(f);
+// var addArrow = (a, b) => {
+//   console.log(arguments);
+//   return a + b;
+// };
