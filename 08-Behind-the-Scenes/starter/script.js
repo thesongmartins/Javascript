@@ -130,3 +130,41 @@ addExpr(2, 5);
 //   console.log(arguments);
 //   return a + b;
 // };
+
+// Object reference (shallow and deep copies)
+const jessica = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+};
+
+function marryPerson(originalPerson, newLastName) {
+  originalPerson.lastName = newLastName;
+  return originalPerson;
+}
+const marriedJessica = marryPerson(jessica, 'Davies');
+
+// const marriedJessica = jessica;
+// marriedJessica.lastName = 'Davies';
+console.log(`Before: `, jessica);
+console.log(`After: `, marriedJessica);
+
+const jessica2 = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+  family: ['Alice', 'Bob'],
+};
+
+// Shallow copy
+const jessicaCopy = { ...jessica2 };
+jessicaCopy.lastName = 'Davies';
+jessicaCopy.family.push('Mary', 'John');
+console.log(jessica2, jessicaCopy);
+
+// Deep Copy
+const jessicaClone = structuredClone(jessica2);
+jessicaClone.family.push('Mary', 'John');
+
+console.log('Original: ', jessica2);
+console.log('Clone: ', jessicaClone);
