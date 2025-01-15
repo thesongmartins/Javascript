@@ -25,3 +25,42 @@ function calcAge(birthYear) {
 
 const firstName = 'Jonas';
 calcAge(1991);
+
+// Hoisting and TDZ Practice
+
+// Hoisting with Variables
+console.log(me);
+console.log(Job);
+console.log(year);
+
+var me = 'Jonas';
+let Job = 'Teacher';
+const year = 1991;
+
+// Hoisting with functions
+console.log(addDecl(2, 3));
+console.log(addArrow(2, 3));
+
+function addDecl(a, b) {
+  return a + b;
+}
+
+const addArrow = (a, b) => a + b;
+
+// Example
+
+if (!numProducts) {
+  deleteShoppingCart();
+}
+
+var numProducts = 10;
+
+function deleteShoppingCart() {
+  console.log('All products deleted');
+}
+
+var x = 1;
+let y = 2;
+const z = 3;
+
+console.log(x === window.x);
