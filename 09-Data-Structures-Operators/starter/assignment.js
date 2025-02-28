@@ -222,13 +222,14 @@ const books = [
     highlighted: true,
   },
 ];
-
+// Array Destructuring.
 const [firstBook, secondBook] = books;
 console.log(firstBook, secondBook);
 
 const [, , thirdBook] = books;
 console.log(thirdBook);
 
+// Nested Destructuring
 const ratings = [
   ['rating', 4.19],
   ['ratingsCount', 144584],
@@ -236,6 +237,42 @@ const ratings = [
 const [[, rating], [, ratingsCount]] = ratings;
 console.log(rating, ratingsCount);
 
+// Default values
 const ratingStars = [63405, 1808];
 const [fiveStarRatings, oneStarRating, threeStarRatings = 0] = ratingStars;
 console.log(fiveStarRatings, oneStarRating, threeStarRatings);
+
+// Objects Destructuring
+const { title, author, ISBN } = books[0];
+console.log(title, author, ISBN);
+
+// Naming Variables
+const { keywords: $tags } = books[0];
+console.log($tags);
+
+// Default Values
+const { language, programmingLanguage = 'Unknown' } = books[6];
+console.log(language, programmingLanguage);
+
+// Variable Names
+let bookTitle = 'unknown';
+let bookAuthor = 'unknown';
+({ title: bookTitle, author: bookAuthor } = books[0]);
+console.log(bookTitle, bookAuthor);
+
+// Nested Objects destructuring
+const {
+  thirdParty: {
+    goodreads: { rating: bookRating },
+  },
+} = books[0];
+console.log(bookRating);
+// Objects as parameters
+const printBookInfo = ({ $title, $author, $year }) => {
+  console.log(`${$title} by ${$author}, ${$year}`);
+};
+printBookInfo({
+  $title: 'Algorithms',
+  $author: 'Robert Sedgewick',
+  $year: '2011',
+});
