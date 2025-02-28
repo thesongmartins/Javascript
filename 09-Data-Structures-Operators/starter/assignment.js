@@ -276,3 +276,65 @@ printBookInfo({
   $author: 'Robert Sedgewick',
   $year: '2011',
 });
+
+// AI Challenges
+const person = {
+  $name: 'John Doe',
+  age: 30,
+  city: 'New York',
+  occupation: 'Developer',
+};
+
+const { $name, age, city } = person;
+console.log($name, age, city);
+
+const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
+
+const [first, , third, , fifth] = colors;
+console.log(first, third, fifth);
+
+const user = {
+  id: 1,
+  $$name: 'Alice',
+  skills: ['Javascript', 'React', 'Node.Js'],
+  address: {
+    $city: 'San Francisco',
+    state: 'CA',
+    country: 'USA',
+  },
+};
+
+const {
+  $$name,
+  skills: [$first],
+  address: { $city },
+} = user;
+console.log($$name, $first, $city);
+
+const config = {
+  server: 'localhost',
+  port: 3000,
+};
+
+const { server, port, timeout = 5000, retries = 3 } = config;
+console.log(server, port, timeout, retries);
+
+const numbers = [1, 2, 3, 4, 5, 6];
+const product = {
+  $id: 'Prod-123',
+  $title: 'Laptop',
+  price: 999.99,
+  inStock: true,
+};
+const [$firstt, second, ...others] = numbers;
+console.log($firstt, second, others);
+const { $id: ProductId, $title: ProductName } = product;
+console.log(ProductId, ProductName);
+
+const formatUser = ({ $namee, email, role = user }) =>
+  `${$namee} (${role} - ${email})`;
+
+const user1 = { $namee: 'John', email: 'john@example.com', role: 'admin' };
+const user2 = { $namee: 'Jane', email: 'jane@example.com' };
+console.log(formatUser(user1));
+console.log(formatUser(user2));
