@@ -11,8 +11,15 @@ const restaurant = {
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
   order: function (starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+
+  orderDelivery: function ({ starterIndex, mainIndex, time, adddress }) {
+    console.log(
+      `Order recieved! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${adddress} at ${time}`
+    );
   },
 
   openingHours: {
@@ -30,6 +37,42 @@ const restaurant = {
     },
   },
 };
+
+restaurant.orderDelivery({
+  time: '23:30',
+  adddress: 'Via del sole, 21',
+  mainIndex: 2,
+  starterIndex: 2,
+});
+
+const { name, openingHours, categories } = restaurant;
+
+console.log(name, openingHours, categories);
+
+// Changing Varible names for objects
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+console.log(restaurantName, hours, tags);
+
+// Default Values on objects
+const { menu = [], starterMenu: startes = [] } = restaurant;
+console.log(menu, startes);
+
+// Mutating Variables
+let a = 111;
+let b = 999;
+const obj = { a: 23, b: 7, c: 14 };
+({ a, b } = obj);
+console.log(a, b);
+
+// Nested Objects
+const {
+  fri: { open, close },
+} = openingHours;
+console.log(open, close);
 
 // Destructuring Arrays
 const arr = [2, 3, 4];
@@ -61,3 +104,8 @@ console.log(i, l, j, k);
 // Default values
 const [p = 1, q = 1, r = 1] = [8, 9];
 console.log(p, q, r);
+
+// Spread Operators [Spreading Arrays]
+const $arr = [7, 8, 9];
+const badNewArr = [1, 2, $arr[0], $arr[1], $arr[2]];
+console.log(badNewArr);
