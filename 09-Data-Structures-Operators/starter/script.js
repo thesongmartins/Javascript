@@ -22,6 +22,12 @@ const restaurant = {
     );
   },
 
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3} `
+    );
+  },
+
   openingHours: {
     thu: {
       open: 12,
@@ -58,8 +64,8 @@ const {
 console.log(restaurantName, hours, tags);
 
 // Default Values on objects
-const { menu = [], starterMenu: startes = [] } = restaurant;
-console.log(menu, startes);
+const { menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters);
 
 // Mutating Variables
 let a = 111;
@@ -112,3 +118,39 @@ console.log(badNewArr);
 
 const newArr = [1, 2, ...$arr];
 console.log(newArr);
+
+console.log(...newArr);
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu);
+
+// Creating copies of array
+const mainMenuCopy = [...restaurant.mainMenu];
+
+// Challenge
+// Join 2 arrays
+const $menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log($menu); // Successfully Solved
+
+const str = 'Jonas';
+const letters = [...str];
+console.log(letters);
+console.log(`${letters.join(' ')}`);
+
+// Real world Example
+const ingredients = [
+  prompt("Let's make pasta! Ingredient 1?"),
+  prompt("Let's make pasta! Ingredient 2?"),
+  prompt("Let's make pasta! Ingredient 3?"),
+];
+console.log(ingredients);
+restaurant.orderPasta(...ingredients);
+
+// Objects
+const newRes = { foundedIn: 1998, ...restaurant, founder: 'Guisappe' };
+console.log(newRes);
+
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = 'Ristorante Roma';
+console.log(restaurantCopy.name);
+console.log(restaurant.name);
