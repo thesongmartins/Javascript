@@ -338,3 +338,10 @@ const user1 = { $namee: 'John', email: 'john@example.com', role: 'admin' };
 const user2 = { $namee: 'Jane', email: 'jane@example.com' };
 console.log(formatUser(user1));
 console.log(formatUser(user2));
+
+// Spread Operators
+const bookAuthors = [...books[0].author, ...books[1].author];
+console.log(bookAuthors);
+
+const spellWord = str => console.log(...str);
+spellWord('Javascript');

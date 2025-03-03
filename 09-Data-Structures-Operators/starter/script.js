@@ -132,19 +132,21 @@ const mainMenuCopy = [...restaurant.mainMenu];
 const $menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 console.log($menu); // Successfully Solved
 
+// Iterables: arrays, strings, maps, sets. NOT Objects
+
 const str = 'Jonas';
 const letters = [...str];
 console.log(letters);
 console.log(`${letters.join(' ')}`);
 
 // Real world Example
-const ingredients = [
-  prompt("Let's make pasta! Ingredient 1?"),
-  prompt("Let's make pasta! Ingredient 2?"),
-  prompt("Let's make pasta! Ingredient 3?"),
-];
-console.log(ingredients);
-restaurant.orderPasta(...ingredients);
+// const ingredients = [
+//   prompt("Let's make pasta! Ingredient 1?"),
+//   prompt("Let's make pasta! Ingredient 2?"),
+//   prompt("Let's make pasta! Ingredient 3?"),
+// ];
+// console.log(ingredients);
+// restaurant.orderPasta(...ingredients);
 
 // Objects
 const newRes = { foundedIn: 1998, ...restaurant, founder: 'Guisappe' };
