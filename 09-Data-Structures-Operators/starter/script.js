@@ -27,6 +27,10 @@ const restaurant = {
       `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3} `
     );
   },
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
 
   openingHours: {
     thu: {
@@ -156,3 +160,52 @@ const restaurantCopy = { ...restaurant };
 restaurantCopy.name = 'Ristorante Roma';
 console.log(restaurantCopy.name);
 console.log(restaurant.name);
+
+// first use case is Destructuring
+// Rest Patterns and Parameters
+const [$a, $b, ...$others] = [1, 2, 4, 5];
+console.log(a, b, $others);
+const [pizza, , risotto, ...otherFoods] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, otherFoods);
+
+// Rest in objects
+const { sat, ...weekDays } = restaurant.openingHours;
+console.log(sat, weekDays);
+
+// Second use case is Functions
+const add = (...numbers) => {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  console.log(sum);
+};
+add(2, 3);
+add(5, 3, 7, 2);
+add(8, 2, 5, 3, 2, 1, 4);
+
+const $x = [23, 5, 7];
+add(...$x);
+
+restaurant.orderPizza('Mushrooms', 'Onion', 'Olives', 'Spinach');
+restaurant.orderPizza('Mushrooms');
+
+// Short Circuiting (&& and ||)
+// The can use any data type, return any data type.
+console.log(3 || 'Jonas');
+console.log('' || 'Jonas');
+console.log(true || 0);
+console.log(undefined || null);
+
+console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+// restaurant.numGuests = 23;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+console.log('--------- AND ---------');
+console.log(0 && 'Jonas');
+console.log(7 && 'Jonas');
