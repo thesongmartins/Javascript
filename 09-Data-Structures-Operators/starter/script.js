@@ -57,7 +57,7 @@ restaurant.orderDelivery({
 
 const { name, openingHours, categories } = restaurant;
 
-console.log(name, openingHours, categories);
+console.log($name, openingHours, categories);
 
 // Changing Varible names for objects
 const {
