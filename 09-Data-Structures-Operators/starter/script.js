@@ -57,7 +57,7 @@ restaurant.orderDelivery({
 
 const { name, openingHours, categories } = restaurant;
 
-console.log($name, openingHours, categories);
+// console.log($name, openingHours, categories);
 
 // Changing Varible names for objects
 const {
@@ -209,3 +209,14 @@ console.log(guests2);
 console.log('--------- AND ---------');
 console.log(0 && 'Jonas');
 console.log(7 && 'Jonas');
+
+console.log('Hello' && 23 && null && 'jonas');
+
+// Practical example
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('Mushrooms', 'Spinach');
+}
+
+restaurant.orderPizza && restaurant.orderPizza('Mushroom', 'Spinach');
+
+// Nullish Caolescing Operator ??
