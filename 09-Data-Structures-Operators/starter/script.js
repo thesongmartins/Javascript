@@ -219,4 +219,9 @@ if (restaurant.orderPizza) {
 
 restaurant.orderPizza && restaurant.orderPizza('Mushroom', 'Spinach');
 
-// Nullish Caolescing Operator ??
+// Nullish Coalescing Operator ??
+const guests = restaurant.numGuests || 10;
+console.log(guests);
+
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
