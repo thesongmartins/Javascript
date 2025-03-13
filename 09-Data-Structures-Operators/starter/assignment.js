@@ -481,12 +481,9 @@ console.log(team1, draw, team2);
 
 // 6)
 const printGoals = (...players) => {
-  players.forEach(player => {
-    console.log(player);
-  });
-  console.log(`Total goals: ${players.length}`);
+  console.log(` ${players.length} goals were scored`);
 };
-printGoals(football.scored);
+printGoals('Lewandoski', 'Gnarby', 'Lewandoski', 'Hummels');
 
 // 7)
 const likelyWIn =

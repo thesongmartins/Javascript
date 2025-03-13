@@ -247,3 +247,11 @@ rest2.numGuests = rest2.numGuests ??= 10;
 // And assignment operator
 rest2.owner = rest2.owner && '<ANONYMOUS>';
 console.log(rest1, rest2);
+
+// Looping arrays: for of loop - ES6
+const $menuu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of $menuu) console.log(item);
+for (const [i, el] of $menuu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
