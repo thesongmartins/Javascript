@@ -6,7 +6,8 @@ const flights =
 
 // Data needed for first part of the section
 const weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-openingHours = {
+
+const openingHours = {
   [weekdays[3]]: {
     open: 12,
     close: 22,
@@ -29,7 +30,7 @@ const restaurant = {
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
   // ES6 Enhanced  objects literals, before es6 openingHours: openingHours
-  openingHours,
+  openingHours: openingHours,
 
   order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
@@ -60,7 +61,7 @@ restaurant.orderDelivery({
   starterIndex: 2,
 });
 
-const { name, openingHours, categories } = restaurant;
+const { name, openingHours: $openingHours, categories } = restaurant;
 
 // console.log($name, openingHours, categories);
 
@@ -262,3 +263,27 @@ for (const [i, el] of $menuu.entries()) {
 }
 
 // Enhanced Object Literals
+
+//  Optional Chaining ?
+
+if (restaurant.openingHours && restaurant.openingHours.mon)
+  console.log(restaurant.openingHours.mon.open);
+
+// With Optional Chaining
+console.log(restaurant.openingHours.mon?.open);
+console.log(restaurant.openingHours?.mon?.open);
+
+const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+for (const day of days) {
+  console.log(day);
+  const open = restaurant.openingHours[day]?.open ?? "We're closed";
+  console.log(`On ${day}, we open at ${open}`);
+}
+
+// Optional Chaining on Methods
+console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
+
+// Chaining on Arrays
+const users = [{ name: 'Jonas', email: 'hello@jonas.io' }];
+console.log(users[0]?.name ?? 'User Array empty');
