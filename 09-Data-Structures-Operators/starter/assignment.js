@@ -490,3 +490,29 @@ const likelyWIn =
   (football.odds.team1 > football.odds.team2 && football.odds.team1) ||
   football.odds.team2;
 console.log(`${likelyWIn} is likely to win`);
+
+// Looping arrays: for..of loops
+//  1)
+let pageSum = 0;
+for (const book of books) {
+  pageSum = pageSum + book.pages;
+}
+console.log(pageSum);
+
+// 2)
+const allAuthors = [];
+for (const book of books) {
+  if (typeof book.author === 'string') {
+    allAuthors.push(book.author);
+    console.log(allAuthors);
+  } else {
+    for (const author of book.author) {
+      allAuthors.push(author);
+      console.log(allAuthors);
+    }
+  }
+}
+
+// 3
+for (const [index, author] of allAuthors.entries())
+  console.log(`${index + 1}. ${author}`);
