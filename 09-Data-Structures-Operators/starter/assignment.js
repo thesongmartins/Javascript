@@ -544,3 +544,10 @@ const newBook2 = {
   pages,
 };
 console.log(newBook2);
+
+// Optional Chaining
+const getFirstKeyword = book => {
+  return book.keywords?.[0];
+};
+getFirstKeyword(book[0]);
+getFirstKeyword(newBook2); // from previous tasks
