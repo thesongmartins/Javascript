@@ -549,5 +549,32 @@ console.log(newBook2);
 const getFirstKeyword = book => {
   return book.keywords?.[0];
 };
-getFirstKeyword(book[0]);
+// getFirstKeyword(book[0]);
 getFirstKeyword(newBook2); // from previous tasks
+
+// Looping objects: keys, values & entries
+for (const [i, player] of football.scored.entries())
+  console.log(`Goal ${i + 1}: ${player}`);
+
+const odds = Object.values(football.odds);
+console.log(odds);
+let average = 0;
+for (const odd of odds) {
+  average += odd;
+}
+console.log(average);
+average /= odds.length;
+console.log(average);
+
+for (const [team, odd] of Object.entries(football.odds)) {
+  const teamStr = team === 'x' ? 'draw' : `Victory ${football[team]}`;
+  console.log(`Odd of ${teamStr} ${odd}`);
+}
+
+const scorers = {};
+for (const player of football.scored) {
+  scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+}
+console.log(scorers);
+
+// Challenge
