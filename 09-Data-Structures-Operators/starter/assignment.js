@@ -576,5 +576,3 @@ for (const player of football.scored) {
   scorers[player] ? scorers[player]++ : (scorers[player] = 1);
 }
 console.log(scorers);
-
-// Challenge
