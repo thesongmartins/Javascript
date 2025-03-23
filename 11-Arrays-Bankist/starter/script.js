@@ -70,7 +70,18 @@ const currencies = new Map([
   ['EUR', 'Euro'],
   ['GBP', 'Pound sterling'],
 ]);
-
+// console.log(currencies);
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+let arr = ['a', 'b', 'c', 'd', 'e'];
+
+// SLICE
+arr.slice(2); // ['c', 'd', 'e']
+console.log(arr.slice(-2));
+
+// SPLICE
+// console.log(arr.splice(2));
+arr.splice(-1);
+console.log(arr);
