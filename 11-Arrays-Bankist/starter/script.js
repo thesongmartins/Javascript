@@ -128,3 +128,17 @@ movements.forEach((movement, index, array) => {
     console.log(`Movement ${index + 1}: You withdrew ${Math.abs(movement)}`);
   }
 });
+
+// forEach with Maps and Sets
+// Map
+currencies.forEach((value, key, map) => {
+  console.log(`${key}: ${value}`);
+});
+// Set
+const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
+console.log(currenciesUnique);
+currenciesUnique.forEach((value, _, map) => {
+  console.log(`${value}: ${value}`);
+});
+
+//
