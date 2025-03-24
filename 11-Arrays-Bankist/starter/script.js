@@ -98,3 +98,33 @@ console.log(letters);
 
 // JOIN
 console.log(letters.join(' - '));
+
+// New array method
+const arrr = [23, 11, 64];
+console.log(arrr[0]);
+console.log(arrr.at(0));
+
+// Getting last array element
+console.log(arrr[arrr.length - 1]);
+console.log(arrr.splice(-1)[0]);
+console.log(arrr.at(-1));
+
+console.log('Jonas'.at(0));
+
+// Looping arrays: forEach
+for (const movement of movements) {
+  if (movement > 0) {
+    console.log(`You deposited ${movement}`);
+  } else {
+    console.log(`You withdrew ${Math.abs(movement)}`);
+  }
+}
+
+console.log('--- FOREACH ---');
+movements.forEach((movement, index, array) => {
+  if (movement > 0) {
+    console.log(`Movement ${index + 1}: You deposited ${movement}`);
+  } else {
+    console.log(`Movement ${index + 1}: You withdrew ${Math.abs(movement)}`);
+  }
+});
