@@ -92,11 +92,17 @@ btnLogin.addEventListener('click', function (e) {
       currentAccount.owner.split(' ')[0]
     }`;
     containerApp.style.opacity = 100;
+    // Clear input fields
+    inputLoginUsername.value = inputLoginPin.value = '';
+    inputLoginPin.blur();
 
     // Display movements
+    displayMovements(currentAccount.movements);
 
     // Display balance
+    calPrintBalance(currentAccount.movements);
     // Display summary
+    calDisplaySummary(currentAccount);
   }
 });
 // Creating DOM Elements
@@ -115,38 +121,34 @@ const displayMovements = function (movements) {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
-displayMovements(account1.movements);
 
 // Balance
 const calPrintBalance = movements => {
   const balance = movements.reduce((acc, mov) => acc + mov, 0);
   labelBalance.textContent = `${balance}€`;
 };
-calPrintBalance(account1.movements);
 
 // Display summary
-const calDisplaySummary = function (movements) {
-  const incomes = movements
+const calDisplaySummary = function (accounts) {
+  const incomes = accounts.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
   labelSumIn.textContent = `${incomes}€`;
   console.log(incomes);
 
-  const out = movements
+  const out = accounts.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
   labelSumOut.textContent = `${Math.abs(out)}€`;
 
   const interest = movements
     .filter(mov => mov > 0)
-    .map(deposit => (deposit * 1.2) / 100)
+    .map(deposit => (deposit * accounts.interestRate) / 100)
     .filter(int => int >= 1)
     .reduce((acc, int) => acc + int, 0);
 
   labelSumInterest.textContent = `${interest}€`;
 };
-calDisplaySummary(account1.movements);
-console.log(account1.interestRate);
 
 // Computing usernames
 const createUsernames = function (accs) {
