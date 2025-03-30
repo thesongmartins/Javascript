@@ -74,6 +74,31 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+// Login credentials
+
+let currentAccount;
+btnLogin.addEventListener('click', function (e) {
+  // Prevent form from submitting
+  e.preventDefault();
+
+  currentAccount = accounts.find(
+    acc => acc.username === inputLoginUsername.value
+  );
+
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    // Display UI and message
+    labelWelcome.textContent = `Welcome back, ${
+      currentAccount.owner.split(' ')[0]
+    }`;
+    containerApp.style.opacity = 100;
+
+    // Display movements
+
+    // Display balance
+    // Display summary
+  }
+});
 // Creating DOM Elements
 const displayMovements = function (movements) {
   containerMovements.innerHTML = '';
@@ -99,6 +124,7 @@ const calPrintBalance = movements => {
 };
 calPrintBalance(account1.movements);
 
+// Display summary
 const calDisplaySummary = function (movements) {
   const incomes = movements
     .filter(mov => mov > 0)
@@ -209,6 +235,12 @@ calAverageHumanAge([3, 5, 2, 12, 7]);
 
 // const withdrawals = movements.filter(mov => mov < 0);
 
+// The find method
+const firstWithdrawal = movements.find(mov => mov < 0);
+console.log(firstWithdrawal); // -400
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account); // {owner: 'Jessica Davis', movements: Array(8), interestRate: 1.5, pin: 2222}
 // // Simple Array Methods
 // let arr = ['a', 'b', 'c', 'd', 'e'];
 
