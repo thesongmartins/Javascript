@@ -92,20 +92,123 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
-// Challenge 1
-const checkDogs = function (dogsJulia, dogsKate) {
-  const dogsJuliaCorrected = dogsJulia.slice();
-  // console.log(dogsJuliaCorrected);
-  dogsJuliaCorrected.splice(0, 1);
-  dogsJuliaCorrected.splice(-2);
-  const dogs = dogsJuliaCorrected.concat(dogsKate);
-  // console.log(dogs);
-  dogs.forEach((dog, i) => {
-    const type = dog >= 3 ? 'adult' : 'puppy';
-    console.log(`Dog number ${i + 1} is an ${type}, and is ${dog} years old.`);
+// Balance
+const calPrintBalance = movements => {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance}€`;
+};
+calPrintBalance(account1.movements);
+
+const calDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes}€`;
+  console.log(incomes);
+
+  const out = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(out)}€`;
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter(int => int >= 1)
+    .reduce((acc, int) => acc + int, 0);
+
+  labelSumInterest.textContent = `${interest}€`;
+};
+calDisplaySummary(account1.movements);
+console.log(account1.interestRate);
+
+// Computing usernames
+const createUsernames = function (accs) {
+  accs.forEach(acc => {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
   });
 };
-checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
+createUsernames(accounts);
+
+// The magic of chaining methods
+const eurToUsd = 1.1;
+// PIPELINE
+const totalDepositUSD = movements
+  .filter(mov => mov > 0)
+  .map(mov => mov * eurToUsd)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(totalDepositUSD);
+// reduce method
+// const balance = movements.reduce((acc, mov) => {
+//   console.log(`Iteration ${i}: ${acc}`);
+//   return acc + mov;
+// }, 0);
+// console.log(balance);
+
+// // Maximum value
+// const max = movements.reduce((acc, mov) => {
+//   return acc > mov ? acc : mov;
+// }, movements[0]);
+
+// Challenge 1
+// const checkDogs = function (dogsJulia, dogsKate) {
+//   const dogsJuliaCorrected = dogsJulia.slice();
+//   // console.log(dogsJuliaCorrected);
+//   dogsJuliaCorrected.splice(0, 1);
+//   dogsJuliaCorrected.splice(-2);
+//   const dogs = dogsJuliaCorrected.concat(dogsKate);
+//   // console.log(dogs);
+//   dogs.forEach((dog, i) => {
+//     const type = dog >= 3 ? 'adult' : 'puppy';
+//     console.log(`Dog number ${i + 1} is an ${type}, and is ${dog} years old.`);
+//   });
+// };
+// checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
+
+// Challenge 2
+// const calAverageHumanAge = function (ages) {
+//   const humanAges = ages.map(age => (age <= 2 ? 2 * age : 16 + age * 4));
+
+//   const adults = humanAges.filter(age => age => 18);
+//   console.log(humanAges);
+//   console.log(adults);
+
+//   const average = adults.reduce((acc, age) => acc + age, 0) / adults.length;
+
+//   return average;
+// };
+// calAverageHumanAge([3, 5, 2, 12, 7]);
+
+const calAverageHumanAge = ages => {
+  const humanAges = ages
+    .map(age => (age < 2 ? 2 * age : 16 + age * 4))
+    .filter(age => age => 18)
+    .reduce((acc, age) => acc + age / Array.length, 0);
+};
+calAverageHumanAge([3, 5, 2, 12, 7]);
+// // Data transformation methods: Map, Filter, Reduce
+// // The Map Method
+// const eurToUsd = 1.1;
+// const movementsUSD = movements.map(mov => mov * eurToUsd);
+// // console.log(movementsUSD);
+
+// const movementsDescriptions = movements.map(
+//   (mov, i) =>
+//     `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
+//       mov
+//     )}`
+// );
+// console.log(movementsDescriptions);
+
+// // The Filter Method
+// const deposits = movements.filter(mov => mov > 0);
+
+// const withdrawals = movements.filter(mov => mov < 0);
+
 // // Simple Array Methods
 // let arr = ['a', 'b', 'c', 'd', 'e'];
 
