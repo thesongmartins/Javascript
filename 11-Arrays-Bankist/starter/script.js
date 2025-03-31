@@ -96,14 +96,57 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
 
-    // Display movements
-    displayMovements(currentAccount.movements);
-
-    // Display balance
-    calPrintBalance(currentAccount.movements);
-    // Display summary
-    calDisplaySummary(currentAccount);
+    // Update UI
+    updateUI(currentAccount);
   }
+});
+
+// Implementing Transfers
+btnTransfer.addEventListener('click', e => {
+  e.preventDefault();
+
+  const amount = Number(inputTransferAmount.value);
+
+  const receiverAcc = accounts.find(
+    acc => acc.username === inputTransferTo.value
+  );
+
+  inputTransferAmount.value = inputTransferTo.value = '';
+
+  if (
+    amount > 0 &&
+    receiverAcc &&
+    currentAccount.balance >= amount &&
+    receiverAcc?.username !== currentAccount.username
+  ) {
+    // Doing the transfer
+    currentAccount.movements.push(-amount);
+    receiverAcc.movements.push(amount);
+
+    // Update UI
+    updateUI(currentAccount);
+    // console.log('Transaction Successful');
+  }
+});
+
+// Closing the account || Using FindIndex method and Splice method
+btnClose.addEventListener('click', e => {
+  e.preventDefault();
+
+  if (
+    inputCloseUsername.value === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(
+      acc => acc.username === currentAccount.username
+    );
+    // console.log(index);
+    // Delete account
+    accounts.splice(index, 1);
+    // Hide UI
+    containerApp.style.opacity = 0;
+  }
+  inputCloseUsername.value = inputClosePin.value = '';
 });
 // Creating DOM Elements
 const displayMovements = function (movements) {
@@ -123,9 +166,9 @@ const displayMovements = function (movements) {
 };
 
 // Balance
-const calPrintBalance = movements => {
-  const balance = movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${balance}€`;
+const calPrintBalance = acc => {
+  acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${acc.balance}€`;
 };
 
 // Display summary
@@ -161,6 +204,17 @@ const createUsernames = function (accs) {
   });
 };
 createUsernames(accounts);
+
+const updateUI = acc => {
+  // Display Movements
+  displayMovements(acc.movements);
+
+  // Display Balance
+  calPrintBalance(acc);
+
+  // Display Summary
+  calDisplaySummary(acc);
+};
 
 // The magic of chaining methods
 const eurToUsd = 1.1;
@@ -243,6 +297,10 @@ console.log(firstWithdrawal); // -400
 
 const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 console.log(account); // {owner: 'Jessica Davis', movements: Array(8), interestRate: 1.5, pin: 2222}
+
+// The findIndex method
+
+//
 // // Simple Array Methods
 // let arr = ['a', 'b', 'c', 'd', 'e'];
 
