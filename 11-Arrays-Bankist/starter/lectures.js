@@ -122,6 +122,13 @@ console.log(overallBalance);
 const overallBalance2 = accounts
   .flatMap(acc => acc.movements)
   .reduce((acc, mov) => acc + mov, 0);
+
+//   Sorting Arrays
+const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+console.log(owners.sort()); // ['Adam', 'Jonas', 'Martha', 'Zach']
+
+console.log(movements.sort((a, b) => {})); // [-400, -130, 2500, 3000, 5000]
+
 // Simple Array Methods
 // let arr = ['a', 'b', 'c', 'd', 'e'];
 
