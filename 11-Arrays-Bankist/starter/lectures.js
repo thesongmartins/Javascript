@@ -127,9 +127,65 @@ const overallBalance2 = accounts
 const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
 console.log(owners.sort()); // ['Adam', 'Jonas', 'Martha', 'Zach']
 
-console.log(movements.sort((a, b) => {})); // [-400, -130, 2500, 3000, 5000]
+console.log(movements); // [-400, -130, 2500, 3000, 5000]
+movements.sort((a, b) => {
+  if (a > b) return 1;
+  if (a < b) return -1;
+});
+console.log(movements);
+
+// Array grouping
+const groupedMovements = Object.groupBy(movements, movement =>
+  movement > 0 ? 'Deposit' : 'Withdrawal'
+);
+console.log(groupedMovements);
+
+// const groupedByActivity = Object.groupBy(accounts, account => {
+//   const movementCount = account.movement.length;
+
+//   if (movementCount >= 8) return 'Very Active';
+//   if (movementCount >= 4) return 'Active';
+//   if (movementCount >= 1) return 'Moderate';
+//   return 'Inactive';
+// });
+// console.log(groupedByActivity);
+
+const groupedAccounts = Object.groupBy(accounts, account => account.type);
+console.log(groupedAccounts);
+
+// More ways of of creating and filling arrays
+const x = new Array(7);
+console.log(x);
+
+// x.fill(1);
+x.fill(1, 3);
+
+// Array.from
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
+
+const movementsUI = Array.from(document.querySelectorAll('.movement__value'));
+console.log(movementsUI);
+labelBalance.addEventListener('click', () => {
+  console.log(movementsUI);
+});
+
+// Non-Destructive Alternatives: toReversed, toSorted, toSplice,with
+const reversedMovements = movements.toReversed();
+
+const newMovement = movements.with(1, 250);
+
+// Array Methods Practice
+
+const bankDepositSum = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov > 0)
+  .reduce((sum, cur) => sum + cur, 0);
 
 // Simple Array Methods
+
+// Challenge 5
+
 // let arr = ['a', 'b', 'c', 'd', 'e'];
 
 // // SLICE
