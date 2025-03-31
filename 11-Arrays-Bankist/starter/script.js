@@ -130,7 +130,20 @@ btnTransfer.addEventListener('click', e => {
 });
 
 // Requesting a loan
+btnLoan.addEventListener('click', e => {
+  e.preventDefault();
 
+  const amount = Math.floor(inputLoanAmount.value);
+
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
+    // Add movement
+    currentAccount.movements.push(amount);
+
+    // Update UI
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = '';
+});
 // Closing the account || Using FindIndex method and Splice method
 btnClose.addEventListener('click', e => {
   e.preventDefault();
@@ -322,7 +335,13 @@ console.log(
 // Some and Every
 const anyDeposits = movements.some(mov => mov > 0); // true
 console.log(anyDeposits);
-//
+
+const allDeposits = movements.every(mov => mov > 0); // false
+
+// Flat and FlatMap
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+const arrFlat = arr.flat(); // [1, 2, 3, 4, 5, 6, 7, 8]
+
 // // Simple Array Methods
 // let arr = ['a', 'b', 'c', 'd', 'e'];
 
