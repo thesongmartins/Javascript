@@ -129,6 +129,8 @@ btnTransfer.addEventListener('click', e => {
   }
 });
 
+// Requesting a loan
+
 // Closing the account || Using FindIndex method and Splice method
 btnClose.addEventListener('click', e => {
   e.preventDefault();
@@ -300,6 +302,26 @@ console.log(account); // {owner: 'Jessica Davis', movements: Array(8), interestR
 
 // The findIndex method
 
+// The Findlast method and FindlastIndex method
+console.log(movements);
+const lastWithdrawal = movements.findLast(mov => mov < 0);
+console.log(lastWithdrawal); // -130
+
+// `Your latest large movement was ${lastWithdrawal} movements ago`;
+
+const latestLargeMovementIndex = movements.findLastIndex(
+  mov => Math.abs(mov) >= 1000
+);
+console.log(latestLargeMovementIndex);
+console.log(
+  `Your latest large movement was ${
+    movements.length - latestLargeMovementIndex
+  } movements ago`
+);
+
+// Some and Every
+const anyDeposits = movements.some(mov => mov > 0); // true
+console.log(anyDeposits);
 //
 // // Simple Array Methods
 // let arr = ['a', 'b', 'c', 'd', 'e'];
