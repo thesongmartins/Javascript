@@ -327,3 +327,11 @@ const transferFee2 = 1_500;
 const PI = 3.14_15_92;
 
 // Working with BigInt
+console.log(2 ** 53 - 1); // 9007199254740991
+console.log(Number.MAX_SAFE_INTEGER); // 9007199254740991
+console.log(2 ** 53 + 1); // 9007199254740992
+console.log(2 ** 53 + 2); // 9007199254740993
+console.log(2 ** 53 + 3); // 9007199254740994
+console.log(2 ** 53 + 4); // 9007199254740995
+
+console.log(BigInt(2 ** 53) + BigInt(4)); // 9007199254740995n
