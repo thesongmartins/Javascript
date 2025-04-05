@@ -287,3 +287,43 @@ console.log(8 ** (1 / 3));
 console.log(Math.max(5, 18, 23, 11, 2));
 console.log(Math.max(5, 18, '23', 11, 2));
 console.log(Math.max(5, 18, '23px', 11, 2));
+
+// The remainder operator
+console.log(5 % 2); // 1
+console.log(8 % 3); // 2
+console.log(6 % 2); // 0
+console.log(7 % 2); // 1
+console.log(8 % 2); // 0
+console.log(9 % 2); // 1
+console.log(10 % 2); // 0
+console.log(11 % 2); // 1
+
+const isEven = n => n % 2 === 0;
+console.log(isEven(8)); // true
+console.log(isEven(23)); // false
+console.log(isEven(10)); // true
+
+// labelBalance.addEventListener('click', function () {
+//   [...document.querySelectorAll('.movements__row')].forEach(function (row, i) {
+//     if (i % 2 === 0) row.style.backgroundColor = 'orangered';
+//     if (i % 3 === 0) row.style.backgroundColor = 'blue';
+//   });
+// });
+// [...document.querySelectorAll('.movements__row')].forEach(function (row, i) {
+//   if (i % 2 === 0) row.style.backgroundColor = 'orangered';
+//   if (i % 3 === 0) row.style.backgroundColor = 'blue';
+// });
+
+// Numeric Separators
+const diameter = 287_460_000_000;
+console.log(diameter); // 287460000000
+
+const priceCents = 345_99;
+console.log(priceCents);
+
+const transferFee1 = 15_00;
+const transferFee2 = 1_500;
+
+const PI = 3.14_15_92;
+
+// Working with BigInt
