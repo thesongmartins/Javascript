@@ -335,3 +335,5 @@ console.log(2 ** 53 + 3); // 9007199254740994
 console.log(2 ** 53 + 4); // 9007199254740995
 
 console.log(BigInt(2 ** 53) + BigInt(4)); // 9007199254740995n
+
+moveBy();
