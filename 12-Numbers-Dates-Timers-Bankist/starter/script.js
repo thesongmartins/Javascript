@@ -88,6 +88,7 @@ const displayMovements = function (acc, sort = false) {
     movements: mov,
     movementDate: acc.movementsDates.at(i),
   }));
+  // console.log(combinedMovsDates);
 
   if (sort) combinedMovsDates.sort((a, b) => a.movements - b.movements);
   // const movs = sort
@@ -127,7 +128,7 @@ const calcDisplayBalance = function (acc) {
   labelBalance.textContent = `${acc.balance.toFixed(2)}€`;
 };
 
-const calcDisplaySummary = function (acc) {
+const calcDisplaySummary = acc => {
   const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
@@ -176,9 +177,9 @@ const updateUI = acc => {
 let currentAccount;
 
 // Fake always logged In
-// currentAccount = account1;
-// updateUI(currentAccount);
-// containerApp.style.opacity = 100;
+currentAccount = account1;
+updateUI(currentAccount);
+containerApp.style.opacity = 100;
 
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
@@ -198,11 +199,11 @@ btnLogin.addEventListener('click', function (e) {
 
     // Create current date and time
     const now = new Date();
-    const day = `${date.getDate()}`.padStart(2, 0);
-    const month = `${date.getMonth() + 1}`.padStart(2, 0);
-    const year = date.getFullYear();
-    const hour = `${date.getHours()}`.padStart(2, 0);
-    const min = `${date.getMinutes()}`.padStart(2, 0);
+    const day = `${now.getDate()}`.padStart(2, 0);
+    const month = `${now.getMonth() + 1}`.padStart(2, 0);
+    const year = now.getFullYear();
+    const hour = `${now.getHours()}`.padStart(2, 0);
+    const min = `${now.getMinutes()}`.padStart(2, 0);
     labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`;
 
     // Clear input fields
