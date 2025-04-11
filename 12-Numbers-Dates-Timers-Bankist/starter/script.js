@@ -130,7 +130,7 @@ const calcDisplaySummary = function (acc) {
 };
 
 const createUsernames = function (accs) {
-  accs.forEach(function (acc) {
+  accs.forEach(acc => {
     acc.username = acc.owner
       .toLowerCase()
       .split(' ')
@@ -140,7 +140,7 @@ const createUsernames = function (accs) {
 };
 createUsernames(accounts);
 
-const updateUI = function (acc) {
+const updateUI = acc => {
   // Display movements
   displayMovements(acc.movements);
 
@@ -154,6 +154,20 @@ const updateUI = function (acc) {
 ///////////////////////////////////////
 // Event handlers
 let currentAccount;
+
+// Fake always logged In
+currentAccount = account1;
+updateUI(currentAccount);
+containerApp.style.opacity = 100;
+
+// day/month/year: Date Format
+const now = new Date();
+const day = `${now.getDate()}`.padStart(2, 0);
+const month = `${now.getMonth() + 1}`.padStart(2, 0);
+const year = now.getFullYear();
+const hour = now.getHours();
+const min = now.getMinutes();
+labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`;
 
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
@@ -337,8 +351,8 @@ btnSort.addEventListener('click', function (e) {
 // console.log(BigInt(2 ** 53) + BigInt(4)); // 9007199254740995n
 
 // Creating Dates
-const now = new Date();
-console.log(now);
+// const now = new Date();
+// console.log(now);
 
 console.log(new Date('Aug 02 2020 18:05:41'));
 console.log(new Date(account1.movementsDates[0]));
@@ -360,7 +374,7 @@ console.log(future.getSeconds());
 console.log(future.toISOString);
 console.log(future.getTime());
 
-console.log(new Date());
+console.log(new Date(2142253385000));
 console.log(Date.now());
 
 future.setFullYear(2040);
