@@ -276,6 +276,7 @@ btnClose.addEventListener('click', function (e) {
   inputCloseUsername.value = inputClosePin.value = '';
 });
 
+// Sorting
 let sorted = false;
 btnSort.addEventListener('click', function (e) {
   e.preventDefault();
