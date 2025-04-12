@@ -124,13 +124,18 @@ const displayMovements = function (acc, sort = false) {
     const date = new Date(movementDate);
     const displayDate = formattedMovementDate(date, acc.locale);
 
+    const formattedMov = new Intl.NumberFormat(acc.locale, {
+      style: 'currency',
+      currency: acc.currency,
+    }).format(mov);
+
     const html = `
       <div class="movements__row">
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
       <div class="movements__date">${displayDate}</div>
-      <div class="movements__value">${acc.movement.toFixed(2)}€</div>
+      <div class="movements__value">${formattedMov}€</div>
       </div>
     `;
 
@@ -464,6 +469,13 @@ labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(noww);
 
 // Internationalization of numbers
 const num = 283894937.23;
+
+const optionss = {
+  style: 'currency',
+  unit: 'celsius',
+  currency: 'EUR',
+  useGrouping: false,
+};
 console.log(new Intl.NumberFormat('en-NG').format(num));
 console.log(new Intl.NumberFormat('ar-SY').format(num));
 console.log(navigator.language, new Intl.NumberFormat('ar-SY').format(num));
