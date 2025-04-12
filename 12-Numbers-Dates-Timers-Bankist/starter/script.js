@@ -483,3 +483,5 @@ const optionss = {
 console.log(new Intl.NumberFormat('en-NG').format(num));
 console.log(new Intl.NumberFormat('ar-SY').format(num));
 console.log(navigator.language, new Intl.NumberFormat('ar-SY').format(num));
+
+// Timers: setTimeOut & setInterval
