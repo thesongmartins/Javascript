@@ -488,6 +488,8 @@ console.log(navigator.language, new Intl.NumberFormat('ar-SY').format(num));
 
 // Timers: setTimeOut & setInterval
 
+// setTimeut
+
 const ingredients = ['olives', 'spinach'];
 const pizzaTimer = setTimeout(
   (ing1, ing2) => console.log(`Here is your pizza 🍕 with ${ing1} and ${ing2}`),
@@ -497,3 +499,9 @@ const pizzaTimer = setTimeout(
 console.log('Waiting...');
 
 if (ingredients.includes('spinach')) clearTimeout(pizzaTimer);
+
+// setInterval
+setInterval(() => {
+  const today = new Date();
+  console.log(today);
+}, 1000);
