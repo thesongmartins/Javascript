@@ -198,6 +198,24 @@ const updateUI = acc => {
 
 ///////////////////////////////////////
 // Event handlers
+
+const startLogOutTimer = () => {
+  // Set time to 5 minutes
+  let time = 120;
+
+  // Call timer everyy second
+  setInterval(() => {
+    const min = String(Math.trunc(time / 60)).padStart(2, 0);
+    const sec = String(Math.trunc(time % 60)).padStart(2, 0);
+    // in each call, print the remaining time to UI
+    labelTimer.textContent = `${min}:${sec}`;
+
+    // Decrease 1s
+    time--;
+    // When 0s, stop timer and logout user
+    // setTimeout();
+  }, 1000);
+};
 let currentAccount;
 
 // Fake always logged In
@@ -249,6 +267,8 @@ btnLogin.addEventListener('click', function (e) {
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
+
+    startLogOutTimer();
 
     // Update UI
     updateUI(currentAccount);
