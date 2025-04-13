@@ -206,15 +206,14 @@ const startLogOutTimer = () => {
     // in each call, print the remaining time to UI
     labelTimer.textContent = `${min}:${sec}`;
 
-    // Decrease 1s
-    time--;
     // When 0s, stop timer and logout user
     if (time === 0) {
       clearInterval(time);
       labelWelcome.textContent = 'Login to get started!';
       containerApp.style.opacity = 0;
     }
-
+    // Decrease 1s
+    time--;
     // setTimeout();
   };
   // Set time to 5 minutes
@@ -307,6 +306,10 @@ btnTransfer.addEventListener('click', function (e) {
 
     // Update UI
     updateUI(currentAccount);
+
+    // Reset timer
+    clearInterval(timer);
+    time = startLogOutTimer();
   }
 });
 
