@@ -330,6 +330,10 @@ btnLoan.addEventListener('click', function (e) {
       // Update UI
       updateUI(currentAccount);
     }, 2500);
+
+    // Reset timer
+    clearInterval(timer);
+    time = startLogOutTimer();
   }
   inputLoanAmount.value = '';
 });
