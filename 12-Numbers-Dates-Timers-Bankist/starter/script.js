@@ -200,11 +200,7 @@ const updateUI = acc => {
 // Event handlers
 
 const startLogOutTimer = () => {
-  // Set time to 5 minutes
-  let time = 120;
-
-  // Call timer everyy second
-  setInterval(() => {
+  const tick = () => {
     const min = String(Math.trunc(time / 60)).padStart(2, 0);
     const sec = String(Math.trunc(time % 60)).padStart(2, 0);
     // in each call, print the remaining time to UI
@@ -213,8 +209,20 @@ const startLogOutTimer = () => {
     // Decrease 1s
     time--;
     // When 0s, stop timer and logout user
+    if (time === 0) {
+      clearInterval(time);
+      labelWelcome.textContent = 'Login to get started!';
+      containerApp.style.opacity = 0;
+    }
+
     // setTimeout();
-  }, 1000);
+  };
+  // Set time to 5 minutes
+  let time = 60;
+
+  // Call timer everyy second
+  tick();
+  const timer = setInterval(tick, 1000);
 };
 let currentAccount;
 
