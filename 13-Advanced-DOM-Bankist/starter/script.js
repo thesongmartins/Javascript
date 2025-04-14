@@ -71,7 +71,7 @@ console.log(getComputedStyle(message).color);
 message.style.height =
   Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
 
-document.documentElement.style.setProperty('--color-primary', 'orangered');
+// document.documentElement.style.setProperty('--color-primary', 'orangered');
 
 // Attributes
 const logo = document.querySelector('.nav__logo');
@@ -82,8 +82,8 @@ console.log(logo.className);
 logo.alt = 'Beautiful minimalist logo';
 
 // Non-standard
-console.log(logo.designer);
-console.log(logo.getAttribute(designer));
+// console.log(logo.designer);
+// console.log(logo.getAttribute(designer));
 logo.setAttribute('company', 'Bankist');
 
 console.log(logo.src);
@@ -97,7 +97,7 @@ console.log(link.getAttribute('href'));
 console.log(logo.CDATA_SECTION_NODE.versionNuber);
 
 // Classes
-logo.classList.add();
-logo.classList.remove();
-logo.classList.toggle();
-logo.classList.contains();
+// logo.classList.add();
+// logo.classList.remove();
+// logo.classList.toggle();
+// logo.classList.contains();
