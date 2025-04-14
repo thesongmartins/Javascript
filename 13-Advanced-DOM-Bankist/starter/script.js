@@ -96,4 +96,8 @@ console.log(link.getAttribute('href'));
 // Data attributes
 console.log(logo.CDATA_SECTION_NODE.versionNuber);
 
-//
+// Classes
+logo.classList.add();
+logo.classList.remove();
+logo.classList.toggle();
+logo.classList.contains();
