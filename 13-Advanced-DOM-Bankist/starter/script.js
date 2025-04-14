@@ -82,8 +82,8 @@ console.log(logo.className);
 logo.alt = 'Beautiful minimalist logo';
 
 // Non-standard
-// console.log(logo.designer);
-// console.log(logo.getAttribute(designer));
+console.log(logo.designer);
+console.log(logo.getAttribute(designer));
 logo.setAttribute('company', 'Bankist');
 
 console.log(logo.src);
@@ -92,3 +92,8 @@ console.log(logo.getAttribute('src'));
 const link = document.querySelector('.twitter-link');
 console.log(link.href);
 console.log(link.getAttribute('href'));
+
+// Data attributes
+console.log(logo.CDATA_SECTION_NODE.versionNuber);
+
+//
