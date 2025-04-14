@@ -39,9 +39,10 @@ btnScrollTo.addEventListener('click', e => {
 // Event Propagation: Bubbling and Capturing
 const randomInt = (min, max) =>
   Math.floor(Math.random() * (max - min + 1) + min);
+// console.log(randomInt(0, 255));
 const randomColor = () =>
   `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)},${randomColor(0, 255)})`;
-// console.log(randomColor(0, 255));
+console.log(randomColor());
 
 document.querySelector('.nav__link').addEventListener('click', function (e) {
   this.style.backgroundColor = randomColor(0, 255);
