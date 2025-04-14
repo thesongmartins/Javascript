@@ -35,6 +35,7 @@ document.addEventListener('keydown', function (e) {
 // Selecting, creating and deleting elements
 console.log(document.documentElement);
 
+const header = document.querySelector('.header');
 const allSections = document.querySelectorAll('.section');
 
 document.getElementById('section--1');
@@ -42,5 +43,52 @@ const allButtons = document.getElementsByTagName('button');
 
 document.getElementsByClassName('btn');
 
-// Creating Elements
+// Creating Elements and Inserting Elements
 const message = document.createElement('div');
+message.classList.add('cookie-message');
+// message.textContent='We use cookied for improved functionality and analytics.';
+message.innerHTML =
+  'We use cookied for improved functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
+// header.prepend(message);
+header.append(message);
+// header.append(message.cloneNode(true));
+
+// header.before(message);
+// header.after(message);
+
+// Delete elements
+document.querySelector('.btn--close-cookie').addEventListener('click', () => {
+  // message.remove();
+  message.parentElement.removeChild(message);
+});
+
+// Styles, Atrributes and Classes
+message.style.backgroundColor = '#37383d';
+message.style.width = '120%';
+
+console.log(getComputedStyle(message).color);
+
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
+
+document.documentElement.style.setProperty('--color-primary', 'orangered');
+
+// Attributes
+const logo = document.querySelector('.nav__logo');
+console.log(logo.alt);
+console.log(logo.src);
+console.log(logo.className);
+
+logo.alt = 'Beautiful minimalist logo';
+
+// Non-standard
+// console.log(logo.designer);
+// console.log(logo.getAttribute(designer));
+logo.setAttribute('company', 'Bankist');
+
+console.log(logo.src);
+console.log(logo.getAttribute('src'));
+
+const link = document.querySelector('.twitter-link');
+console.log(link.href);
+console.log(link.getAttribute('href'));
