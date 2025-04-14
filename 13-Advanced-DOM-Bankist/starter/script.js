@@ -130,3 +130,5 @@ console.log(link.getAttribute('href'));
 // logo.classList.remove();
 // logo.classList.toggle();
 // logo.classList.contains();
+
+// Types of events and event handlers
