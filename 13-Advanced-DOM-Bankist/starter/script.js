@@ -133,9 +133,14 @@ console.log(link.getAttribute('href'));
 
 // Types of events and event handlers
 const h1 = document.querySelector('h1');
-h1.addEventListener('mouseenter', e => {
+const alertH1 = e => {
   alert('addEventListener: Great! You are reading the heading');
-});
+};
+h1.addEventListener('mouseenter', alertH1);
+
+setTimeout(() => {
+  h1.removeEventListener('mouseenter', alertH1);
+}, 3000);
 h1.onmouseenter = e => {
   alert('addEventListener: Great! You are reading the heading');
 };
