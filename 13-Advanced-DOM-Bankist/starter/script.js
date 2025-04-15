@@ -64,31 +64,22 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
     console.log('link');
   }
 });
-// Menu fade animation
-nav.addEventListener('mouseover', function (e) {
+// Passing arguments to event handlers: Menu fade animation
+const handlerHover = function (e) {
   if (e.target.classList.contains('nav__link')) {
     const link = e.target;
     const siblings = link.closest('.nav').querySelectorAll('.nav__link');
     const logo = link.closest('.nav').querySelector('img');
 
     siblings.forEach(el => {
-      if (el !== link) el.style.opacity = 0.5;
+      if (el !== link) el.style.opacity = this;
     });
-    logo.style.opacity = 0.5;
+    logo.style.opacity = this;
   }
-});
-nav.addEventListener('mouseout', function (e) {
-  if (e.target.classList.contains('nav__link')) {
-    const link = e.target;
-    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
-    const logo = link.closest('.nav').querySelector('img');
-
-    siblings.forEach(el => {
-      if (el !== link) el.style.opacity = 1;
-    });
-    logo.style.opacity = 1;
-  }
-});
+};
+// Passing arguments into handler
+nav.addEventListener('mouseover', handlerHover.bind(0.5));
+nav.addEventListener('mouseout', handlerHover.bind(1));
 // Building Tabbed Component
 const tabs = document.querySelectorAll('.operations__tab');
 const tabsContainer = document.querySelector('.operations__tab-container');
