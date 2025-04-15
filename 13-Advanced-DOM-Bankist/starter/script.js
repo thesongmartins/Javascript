@@ -38,15 +38,17 @@ btnScrollTo.addEventListener('click', e => {
 });
 
 // Event Delegation: Implementing Pagination.
-document.querySelectorAll('.nav__link').forEach(function (nav) {
-  nav.addEventListener('click', e => {
-    e.preventDefault();
+// document.querySelectorAll('.nav__link').forEach(function (nav) {
+//   nav.addEventListener('click', function (e) {
+//     e.preventDefault();
 
-    const id = this.getAttribute('href');
-    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-    console.log('link');
-  });
-});
+//     const id = this.getAttribute('href');
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//     console.log('link');
+//   });
+// });
+
+// 1.
 
 const openModal = function (e) {
   e.preventDefault();
