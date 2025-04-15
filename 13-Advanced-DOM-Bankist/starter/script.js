@@ -81,6 +81,8 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+// Event Delegation: Implementing Pagination.
+
 // Selecting, creating and deleting elements
 console.log(document.documentElement);
 
