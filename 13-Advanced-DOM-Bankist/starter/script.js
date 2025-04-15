@@ -48,23 +48,38 @@ btnScrollTo.addEventListener('click', e => {
 //   });
 // });
 
-// 1.
+// 1. Add event listener to common parent element
+// 2. Determine what element originated the event
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  e.preventDefault();
+  // console.log(e.target);
 
+  // Matching strategy
+  if (e.target.classList.contains('.nav__link')) {
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+    console.log('link');
+  }
+});
+
+// Open Modal
 const openModal = function (e) {
   e.preventDefault();
   modal.classList.remove('hidden');
   overlay.classList.remove('hidden');
 };
-
+// Close Modal
 const closeModal = function () {
   modal.classList.add('hidden');
   overlay.classList.add('hidden');
 };
 
+// Btn Open Modal
 btnsOpenModal.forEach(btn => {
   btn.addEventListener('click', openModal);
 });
 
+// Btn Close Modal
 btnCloseModal.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
 
@@ -178,3 +193,5 @@ message.style.height =
 // document.querySelector('.nav').addEventListener('click', e => {
 //   console.log('LINK');
 // });
+
+//
