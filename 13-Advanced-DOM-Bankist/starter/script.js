@@ -80,6 +80,15 @@ const handlerHover = function (e) {
 // Passing arguments into handler
 nav.addEventListener('mouseover', handlerHover.bind(0.5));
 nav.addEventListener('mouseout', handlerHover.bind(1));
+
+// Sticky navigation
+const intiatlCoords = section1.getBoundingClientRect();
+window.addEventListener('scroll', function (e) {
+  console.log(window.scrollY);
+
+  if (window.scroll > intiatlCoords.top) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+});
 // Building Tabbed Component
 const tabs = document.querySelectorAll('.operations__tab');
 const tabsContainer = document.querySelector('.operations__tab-container');
