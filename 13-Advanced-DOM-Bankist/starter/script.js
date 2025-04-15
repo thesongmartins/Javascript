@@ -63,6 +63,9 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 });
 
 // Building Tabbed Component
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
 
 // Open Modal
 const openModal = function (e) {
