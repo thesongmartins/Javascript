@@ -36,25 +36,16 @@ btnScrollTo.addEventListener('click', e => {
   // });
   section1.scrollIntoView({ behavior: 'smooth' });
 });
-// Event Propagation: Bubbling and Capturing
-const randomInt = (min, max) =>
-  Math.floor(Math.random() * (max - min + 1) + min);
-// console.log(randomInt(0, 255));
-const randomColor = () =>
-  `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)},${randomInt(0, 255)})`;
-console.log(randomColor());
 
-document.querySelector('.nav__link').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomColor();
+// Event Delegation: Implementing Pagination.
+document.querySelectorAll('.nav__link').forEach(function (nav) {
+  nav.addEventListener('click', e => {
+    e.preventDefault();
 
-  // Stop propagation
-  // e.stopPropagation();
-});
-document.querySelector('.nav__links').addEventListener('click', e => {
-  console.log('LINK');
-});
-document.querySelector('.nav').addEventListener('click', e => {
-  console.log('LINK');
+    const id = this.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+    console.log('link');
+  });
 });
 
 const openModal = function (e) {
@@ -80,8 +71,6 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
-
-// Event Delegation: Implementing Pagination.
 
 // Selecting, creating and deleting elements
 console.log(document.documentElement);
@@ -125,24 +114,24 @@ message.style.height =
 // document.documentElement.style.setProperty('--color-primary', 'orangered');
 
 // Attributes
-const logo = document.querySelector('.nav__logo');
-console.log(logo.alt);
-console.log(logo.src);
-console.log(logo.className);
+// const logo = document.querySelector('.nav__logo');
+// console.log(logo.alt);
+// console.log(logo.src);
+// console.log(logo.className);
 
-logo.alt = 'Beautiful minimalist logo';
+// logo.alt = 'Beautiful minimalist logo';
 
 // Non-standard
 // console.log(logo.designer);
 // console.log(logo.getAttribute(designer));
-logo.setAttribute('company', 'Bankist');
+// logo.setAttribute('company', 'Bankist');
 
-console.log(logo.src);
-console.log(logo.getAttribute('src'));
+// console.log(logo.src);
+// console.log(logo.getAttribute('src'));
 
-const link = document.querySelector('.twitter-link');
-console.log(link.href);
-console.log(link.getAttribute('href'));
+// const link = document.querySelector('.twitter-link');
+// console.log(link.href);
+// console.log(link.getAttribute('href'));
 
 // Data attributes
 // console.log(logo.CDATA_SECTION_NODE.versionNuber);
@@ -154,15 +143,36 @@ console.log(link.getAttribute('href'));
 // logo.classList.contains();
 
 // Types of events and event handlers
-const h1 = document.querySelector('h1');
-const alertH1 = e => {
-  alert('addEventListener: Great! You are reading the heading');
-};
-h1.addEventListener('mouseenter', alertH1);
+// const h1 = document.querySelector('h1');
+// const alertH1 = e => {
+//   alert('addEventListener: Great! You are reading the heading');
+// };
+// h1.addEventListener('mouseenter', alertH1);
 
-setTimeout(() => {
-  h1.removeEventListener('mouseenter', alertH1);
-}, 3000);
-h1.onmouseenter = e => {
-  alert('addEventListener: Great! You are reading the heading');
-};
+// setTimeout(() => {
+//   h1.removeEventListener('mouseenter', alertH1);
+// }, 3000);
+// h1.onmouseenter = e => {
+//   alert('addEventListener: Great! You are reading the heading');
+// };
+
+// Event Propagation: Bubbling and Capturing
+// const randomInt = (min, max) =>
+//   Math.floor(Math.random() * (max - min + 1) + min);
+// // console.log(randomInt(0, 255));
+// const randomColor = () =>
+//   `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)},${randomInt(0, 255)})`;
+// console.log(randomColor());
+
+// document.querySelector('.nav__link').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor();
+
+//   // Stop propagation
+//   // e.stopPropagation();
+// });
+// document.querySelector('.nav__links').addEventListener('click', e => {
+//   console.log('LINK');
+// });
+// document.querySelector('.nav').addEventListener('click', e => {
+//   console.log('LINK');
+// });
