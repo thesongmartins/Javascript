@@ -51,13 +51,15 @@ btnScrollTo.addEventListener('click', e => {
 // 1. Add event listener to common parent element
 // 2. Determine what element originated the event
 document.querySelector('.nav__links').addEventListener('click', function (e) {
-  e.preventDefault();
+  // e.preventDefault();
   // console.log(e.target);
 
   // Matching strategy
   if (e.target.classList.contains('.nav__link')) {
     const id = e.target.getAttribute('href');
-    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+    document.querySelector(id).scrollIntoView({
+      behavior: 'smooth',
+    });
     console.log('link');
   }
 });
@@ -72,7 +74,19 @@ tabsContainer.addEventListener('click', function (e) {
 
   // Guard clause
   if (!clicked) return;
+
+  // Active tab
+  tabs.forEach(tab => tab.classList.remove('operations__tab--active'));
+  tabsContent.forEach(con =>
+    con.classList.remove('operations__content--active')
+  );
   clicked.classList.add('operations__tab--active');
+
+  // Activate content area
+  console.log(clicked.dataset.tab);
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
 });
 // Open Modal
 const openModal = function (e) {
@@ -207,25 +221,25 @@ message.style.height =
 // });
 
 // Dom Traversing
-const h1 = document.querySelector('h1');
+// const h1 = document.querySelector('h1');
 
 // Going dwonwards: Child
-console.log(h1.querySelectorAll('.highlight'));
-console.log(h1.childNodes);
-console.log(h1.children);
-h1.firstElementChild.style.color = 'white';
+// console.log(h1.querySelectorAll('.highlight'));
+// console.log(h1.childNodes);
+// console.log(h1.children);
+// h1.firstElementChild.style.color = 'white';
 
 // Going Upwards: parents
-console.log(h1.parentNode);
-console.log(h1.parentElement);
+// console.log(h1.parentNode);
+// console.log(h1.parentElement);
 
-h1.closest('.header').style.background = 'var(--gradient-secondary)';
+// h1.closest('.header').style.background = 'var(--gradient-secondary)';
 
 // Going sideways: siblings
-console.log(h1.previousElementSibling);
-console.log(h1.nextElementSibling);
+// console.log(h1.previousElementSibling);
+// console.log(h1.nextElementSibling);
 
-console.log(h1.previousSibling);
-console.log(h1.nextSibling);
+// console.log(h1.previousSibling);
+// console.log(h1.nextSibling);
 
-console.log(h1.parentElement.children);
+// console.log(h1.parentElement.children);
