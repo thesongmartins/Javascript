@@ -62,6 +62,8 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   }
 });
 
+// Building Tabbed Component
+
 // Open Modal
 const openModal = function (e) {
   e.preventDefault();
