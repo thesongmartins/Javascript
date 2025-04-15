@@ -84,11 +84,15 @@ nav.addEventListener('mouseout', handlerHover.bind(1));
 // Sticky navigation
 const intiatlCoords = section1.getBoundingClientRect();
 window.addEventListener('scroll', function (e) {
-  console.log(window.scrollY);
+  console.log(window);
 
-  if (window.scrollY > intiatlCoords.top) nav.classList.add('sticky');
+  if (window.scroll > intiatlCoords.top) nav.classList.add('sticky');
   else nav.classList.remove('sticky');
 });
+
+// Intersection observer API
+new IntersectionObserver();
+
 // Building Tabbed Component
 const tabs = document.querySelectorAll('.operations__tab');
 const tabsContainer = document.querySelector('.operations__tab-container');
