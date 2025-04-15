@@ -194,4 +194,4 @@ message.style.height =
 //   console.log('LINK');
 // });
 
-//
+// Dom Traversing
