@@ -86,7 +86,7 @@ const intiatlCoords = section1.getBoundingClientRect();
 window.addEventListener('scroll', function (e) {
   console.log(window.scrollY);
 
-  if (window.scroll > intiatlCoords.top) nav.classList.add('sticky');
+  if (window.scrollY > intiatlCoords.top) nav.classList.add('sticky');
   else nav.classList.remove('sticky');
 });
 // Building Tabbed Component
