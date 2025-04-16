@@ -105,7 +105,7 @@ const headerr = document.querySelector('.header');
 const navHeight = nav.getBoundingClientRect().height;
 const stickyNav = function (entries) {
   const [entry] = entries;
-  console.log(entry);
+  // console.log(entry);
 
   if (!entry.isIntersecting) nav.classList.add('sticky');
   else nav.classList.remove('sticky');
@@ -117,6 +117,21 @@ const headerObs = new IntersectionObserver(stickyNav, {
 });
 headerObs.observe(headerr);
 
+// Revealing Elements on scroll
+const allSectionss = document.querySelectorAll('.section');
+const revealSection = function (entries, obs) {
+  const [entry] = entries;
+  console.log(entry);
+};
+
+const sectionObs = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.15,
+});
+allSectionss.forEach(section => {
+  sectionObs.observe(section);
+  section.classList.add('section--hidden');
+});
 // Building Tabbed Component
 const tabs = document.querySelectorAll('.operations__tab');
 const tabsContainer = document.querySelector('.operations__tab-container');
