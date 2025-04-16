@@ -122,6 +122,8 @@ const allSectionss = document.querySelectorAll('.section');
 const revealSection = function (entries, obs) {
   const [entry] = entries;
   console.log(entry);
+  if (!entry.isIntersecting) return;
+  entry.target.classList.remove('section--hidden');
 };
 
 const sectionObs = new IntersectionObserver(revealSection, {
@@ -131,6 +133,7 @@ const sectionObs = new IntersectionObserver(revealSection, {
 allSectionss.forEach(section => {
   sectionObs.observe(section);
   section.classList.add('section--hidden');
+  observer.unobserve(entry.target);
 });
 // Building Tabbed Component
 const tabs = document.querySelectorAll('.operations__tab');
