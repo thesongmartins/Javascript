@@ -120,10 +120,11 @@ headerObs.observe(headerr);
 // Revealing Elements on scroll
 const allSectionss = document.querySelectorAll('.section');
 const revealSection = function (entries, obs) {
-  const [entry] = entries;
-  console.log(entry);
-  if (!entry.isIntersecting) return;
-  entry.target.classList.remove('section--hidden');
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.remove('section--hidden');
+  });
+  // console.log(entry);
 };
 
 const sectionObs = new IntersectionObserver(revealSection, {
@@ -135,6 +136,28 @@ allSectionss.forEach(section => {
   section.classList.add('section--hidden');
   observer.unobserve(entry.target);
 });
+
+// Lazy Loading  Images
+const imgTargets = document.querySelectorAll('img[data-src]');
+const loadImg = function (entries, observer) {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) return;
+
+  // Replace src with data-src
+  entry.targeet.src = entry.target.dataset.src;
+  entry.targeet.addEventListener('load', function () {
+    entry.target.classList.remove('lazy-iimg');
+  });
+  observer.unobserve(entry.target);
+};
+const imgObserver = new IntersectionObserver(loadImg, {
+  root: null,
+  threshold: 0.15,
+  rootMargin: '+200px',
+});
+
+imgTargets.forEach(img => imgObserver.observe(img));
 // Building Tabbed Component
 const tabs = document.querySelectorAll('.operations__tab');
 const tabsContainer = document.querySelector('.operations__tab-container');
