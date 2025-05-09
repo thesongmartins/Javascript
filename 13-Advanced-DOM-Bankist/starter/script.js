@@ -145,10 +145,11 @@ const loadImg = function (entries, observer) {
   if (!entry.isIntersecting) return;
 
   // Replace src with data-src
-  entry.targeet.src = entry.target.dataset.src;
-  entry.targeet.addEventListener('load', function () {
-    entry.target.classList.remove('lazy-iimg');
+  entry.target.src = entry.target.dataset.src;
+  entry.target.addEventListener('load', function () {
+    entry.target.classList.remove('lazy-img');
   });
+
   observer.unobserve(entry.target);
 };
 const imgObserver = new IntersectionObserver(loadImg, {
@@ -214,8 +215,9 @@ const sliders = () => {
   const prevSlide = function () {
     if (curSlide === 0) {
       curSlide = maxSlide - 1;
+    } else {
+      curSlide--;
     }
-    curSlide--;
 
     goToSlide(curSlide);
     activateDots(curSlide);
@@ -418,3 +420,5 @@ message.style.height =
 // console.log(h1.nextSibling);
 
 // console.log(h1.parentElement.children);
+
+// Lifecycle DOM Events
