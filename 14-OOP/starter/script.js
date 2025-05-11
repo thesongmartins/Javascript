@@ -238,3 +238,6 @@ console.log(mike);
 
 mike.introduce();
 mike.calcAge();
+
+console.log(mike.__proto__);
+console.log(mike.__proto__.__proto__);
