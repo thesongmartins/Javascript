@@ -120,6 +120,14 @@ class PersonCl {
   get fullName() {
     return this._fullName;
   }
+
+  //   Static Method
+  // Array.from is attached to the constructor
+  // parseFloat
+  static hey() {
+    console.log('Hey there');
+    console.log(this);
+  }
 }
 
 const jessica = new PersonCl('Jessica Davies', 1996);
@@ -132,6 +140,8 @@ PersonCl.prototype.greet = function () {
   console.log(`Hey ${this.firstName}`);
 };
 jessica.greet();
+
+PersonCl.hey();
 
 // 1. Classes are NOT hoisted
 // 2. Classes are first class citizens
@@ -153,3 +163,5 @@ const account = {
 console.log(account.latest);
 account.latest = 50;
 console.log(account.movements);
+
+// Static Methods
