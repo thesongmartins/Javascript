@@ -445,7 +445,7 @@ class CarCl2 {
   }
 }
 
-class EVCl extends CarCl {
+class EVCl extends CarCl2 {
   #charge;
 
   constructor(make, speed, charge) {
