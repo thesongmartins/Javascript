@@ -267,3 +267,21 @@ EV.prototype.accelerate = function () {
 };
 const tesla = new EV('Tesla', 120, 23);
 tesla.chargeBattery(90);
+
+// ES6 Classes
+class StudentCl extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    // Always needs to happen first!
+    super(fullName, birthYear);
+
+    this.course = course;
+  }
+
+  introduce() {
+    console.log(`My name is ${this.fullName} and I study ${this.course}`);
+  }
+}
+
+const martha = new StudentCl('Martha Jones', 2012, 'Computer Science');
+martha.introduce();
+martha.calcAge();
