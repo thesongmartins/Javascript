@@ -19,9 +19,11 @@ if (navigator.geolocation)
 
       console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
 
-      const map = L.map('map').setView([51.505, -0.09], 13);
+      const coords = [latitude, longitude];
 
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      const map = L.map('map').setView(coords, 13);
+
+      L.tileLayer('https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
         attribution:
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map);
