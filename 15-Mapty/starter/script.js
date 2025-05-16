@@ -296,6 +296,13 @@ class App {
 
     this.#workout.forEach(work => this._renderWorkout(work));
   }
+
+  rest() {
+    localStorage.removeItem('workouts');
+    location.reload();
+    this.#workout = [];
+    this._renderWorkout(work);
+  }
 }
 
 const app = new App();
