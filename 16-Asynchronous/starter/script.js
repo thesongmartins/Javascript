@@ -110,3 +110,16 @@ const renderCountryNeighbors = function (country) {
   });
 };
 renderCountryNeighbors('portugal');
+
+// Promise And the fetch API
+// 1. Browser sends a request to the server
+// 2. Server processes the request
+// 3. Server sends a response to the browser
+// 4. Browser renders the response
+
+const request = fetch(`https://restcountries.com/v2/name/portugal`);
+console.log(request);
+
+request.then(response => {
+  console.log(response);
+});
