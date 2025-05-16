@@ -123,3 +123,20 @@ console.log(request);
 request.then(response => {
   console.log(response);
 });
+
+// Consuming Promises
+// 1. Browser sends a request to the server
+// 2. Server processes the request
+// 3. Server sends a response to the browser
+// 4. Browser renders the response
+const getCountryData = function (country) {
+  fetch(`https://restcountries.com/v2/name/${country}`)
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      country1(data[0]);
+    });
+};
+
+getCountryData('portugal');
