@@ -38,3 +38,18 @@ const renderCountry = function (country) {
 renderCountry('usa');
 renderCountry('portugal');
 renderCountry('japan');
+
+// How the web works
+// 1. Browser sends a request to the server
+// 2. Server processes the request
+// 3. Server sends a response to the browser
+// 4. Browser renders the response
+// 5. Browser sends a request to the server
+// 6. Server processes the request
+// 7. Server sends a response to the browser
+
+// How AJAX works
+// 1. Browser sends a request to the server
+// 2. Server processes the request
+// 3. Server sends a response to the browser
+// 4. Browser renders the response
