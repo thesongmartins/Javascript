@@ -61,7 +61,7 @@ const countriesContainer = document.querySelector('.countries');
 // 4. Browser renders the response
 const renderError = function (msg) {
   countriesContainer.insertAdjacentText('beforeend', msg);
-  //   countriesContainer.style.opacity = 1;
+  countriesContainer.style.opacity = 1;
 };
 
 const country1 = function (data, className = ' ') {
@@ -77,7 +77,7 @@ const country1 = function (data, className = ' ') {
           </article>`;
 
   countriesContainer.insertAdjacentHTML('beforeend', html);
-  //   countriesContainer.style.opacity = 1;
+  countriesContainer.style.opacity = 1;
 };
 
 // const renderCountryNeighbors = function (country) {
@@ -223,6 +223,7 @@ const whereAmI = function (lat, lng) {
     .catch(err => console.error(`${err.message} 💥`));
 };
 whereAmI(52.508, 13.381);
+
 //api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}
 // const getCountryData = function (country) {
 //   // Country 1
