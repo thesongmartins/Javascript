@@ -269,3 +269,41 @@ console.log('Test End');
 // https: btn.addEventListener('click', function () {
 //   getCountryData('52.508, 13.381');
 // });
+
+// Building a simple promise
+const lotteryPromise = new Promise(function (resolve, reject) {
+  console.log('Lottery draw is happening');
+  setTimeout(() => {
+    if (Math.random() >= 0.5) {
+      resolve('You win');
+    } else {
+      reject('You lose');
+    }
+  }, 2000);
+});
+console.log(lotteryPromise);
+lotteryPromise.then(res => console.log(res)).catch(err => console.log(err));
+
+// Promisifying setTimeout
+const wait = function (seconds) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
+
+wait(2)
+  .then(() => {
+    console.log('I waited for 2 seconds');
+    return wait(1);
+  })
+  .then(() => {
+    console.log('I waited for 3 seconds');
+    return wait(1);
+  })
+  .then(() => {
+    console.log('I waited for 4 seconds');
+    return wait(1);
+  })
+  .then(() => {
+    console.log('I waited for 5 seconds');
+  });
