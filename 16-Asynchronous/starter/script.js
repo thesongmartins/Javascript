@@ -225,17 +225,17 @@ GOOD LUCK 😀
 // whereAmI(52.508, 13.381);
 
 // The Event Loop
-console.log('Test Start');
+// console.log('Test Start');
 
-setTimeout(() => console.log('0 sec timer'), 0);
-Promise.resolve('Resolved promise 1').then(res => console.log(res));
+// setTimeout(() => console.log('0 sec timer'), 0);
+// Promise.resolve('Resolved promise 1').then(res => console.log(res));
 
-Proomise.resolve('Resolved Promise 2').then(res => {
-  for (let i = 0; i < 1000000000; i++) {
-    console.log(res);
-  }
-});
-console.log('Test End');
+// Proomise.resolve('Resolved Promise 2').then(res => {
+//   for (let i = 0; i < 1000000000; i++) {
+//     console.log(res);
+//   }
+// });
+// console.log('Test End');
 
 //api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}
 // const getCountryData = function (country) {
@@ -349,7 +349,7 @@ btn.addEventListener('click', whereAmI);
 
 // Challenge #2
 
-const wait = function (seconds) {
+const waitt = function (seconds) {
   return new Promise(function (resolve) {
     setTimeout(resolve, seconds * 1000);
   });
@@ -394,3 +394,31 @@ createImage('img/img-1.jpg')
     currentImg.style.display = 'none';
   })
   .catch(err => console.error(err));
+
+// Consuming Promises with Async/Await
+
+const getPositionn = function () {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
+
+const whereAmIi = async function (country) {
+  // Geolocation
+  const pos = await getPositionn();
+  const { latitude: lat, longitude: lng } = pos.coords;
+
+  // Reverse geocoding
+  const resGeo = await fetch(
+    `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`
+  );
+  const dataGeo = await resGeo.json();
+
+  // Country
+  const res = await fetch(
+    `https://restcountries.eu/rest/v2/name/${dataGeo.country}`
+  );
+  const data = await res.json();
+  country1(data[0]);
+};
+whereAmI();
