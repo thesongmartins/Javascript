@@ -197,32 +197,32 @@ TEST COORDINATES 2: -33.933, 18.474
 GOOD LUCK 😀
 */
 
-const whereAmI = function (lat, lng) {
-  fetch(
-    `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`
-  )
-    .then(response => {
-      console.log(response);
-      if (!response.ok)
-        throw new Error(`Problem with geocoding ${response.status}`);
-      return response.json();
-    })
-    .then(data => {
-      console.log(data);
-      console.log(`You are in ${data.city}, ${data.countryName}`);
+// const whereAmI = function (lat, lng) {
+//   fetch(
+//     `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`
+//   )
+//     .then(response => {
+//       console.log(response);
+//       if (!response.ok)
+//         throw new Error(`Problem with geocoding ${response.status}`);
+//       return response.json();
+//     })
+//     .then(data => {
+//       console.log(data);
+//       console.log(`You are in ${data.city}, ${data.countryName}`);
 
-      return fetch(`https://restcountries.eu/rest/v2/name/${data.countryName}`);
-    })
-    .then(response => {
-      if (!response.ok)
-        throw new Error(`Country not found (${response.status})`);
+//       return fetch(`https://restcountries.eu/rest/v2/name/${data.countryName}`);
+//     })
+//     .then(response => {
+//       if (!response.ok)
+//         throw new Error(`Country not found (${response.status})`);
 
-      return response.json();
-    })
-    .then(data => country1(data[0]))
-    .catch(err => console.error(`${err.message} 💥`));
-};
-whereAmI(52.508, 13.381);
+//       return response.json();
+//     })
+//     .then(data => country1(data[0]))
+//     .catch(err => console.error(`${err.message} 💥`));
+// };
+// whereAmI(52.508, 13.381);
 
 // The Event Loop
 console.log('Test Start');
@@ -307,3 +307,42 @@ wait(2)
   .then(() => {
     console.log('I waited for 5 seconds');
   });
+
+// Promisifying the Geolocation API
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
+
+const whereAmI = function () {
+  getPosition()
+    .then(pos => {
+      const { latitude: lat, longitude: lng } = pos.coords;
+
+      return fetch(
+        `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`
+      );
+    })
+    .then(response => {
+      console.log(response);
+      if (!response.ok)
+        throw new Error(`Problem with geocoding ${response.status}`);
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+      console.log(`You are in ${data.city}, ${data.countryName}`);
+
+      return fetch(`https://restcountries.eu/rest/v2/name/${data.countryName}`);
+    })
+    .then(response => {
+      if (!response.ok)
+        throw new Error(`Country not found (${response.status})`);
+
+      return response.json();
+    })
+    .then(data => country1(data[0]))
+    .catch(err => console.error(`${err.message} 💥`));
+};
+btn.addEventListener('click', whereAmI);
