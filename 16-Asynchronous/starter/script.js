@@ -424,17 +424,26 @@ const whereAmIi = async function (country) {
     if (!res.ok) throw new Error('Country not found');
     const data = await res.json();
     country1(data[0]);
+    return `You are in ${dataGeo.city}, ${dataGeo.countryName}`;
   } catch (err) {
     console.error(`${err} 💥💥💥`);
     renderError(`${err.message}`);
+
+    // Reject Promise returned from async function
+    throw err;
   }
 };
-whereAmI();
-
-// try {
-//   let y = 1;
-//   const x = 2;
-//   x = 3;
-// } catch (err) {
-//   console.log(err);
-// }
+// Returning Values from Async Functions
+// whereAmI()
+//   .then(city => console.log(city))
+//   .catch(err => console.error(err))
+//   .finally(() => console.log('Finished getting location'));
+(async function () {
+  try {
+    const city = await whereAmI();
+    console.log(city);
+  } catch (err) {
+    console.error(err);
+  }
+  console.log('Finished getting location');
+})();
