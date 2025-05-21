@@ -396,6 +396,7 @@ createImage('img/img-1.jpg')
   .catch(err => console.error(err));
 
 // Consuming Promises with Async/Await
+// Error Handling in Async/Await with try catch
 
 const getPositionn = function () {
   return new Promise(function (resolve, reject) {
@@ -405,20 +406,35 @@ const getPositionn = function () {
 
 const whereAmIi = async function (country) {
   // Geolocation
-  const pos = await getPositionn();
-  const { latitude: lat, longitude: lng } = pos.coords;
+  try {
+    const pos = await getPositionn();
+    const { latitude: lat, longitude: lng } = pos.coords;
 
-  // Reverse geocoding
-  const resGeo = await fetch(
-    `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`
-  );
-  const dataGeo = await resGeo.json();
+    // Reverse geocoding
+    const resGeo = await fetch(
+      `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`
+    );
+    if (!resGeo.ok) throw new Error('Problem getting location data');
+    const dataGeo = await resGeo.json();
 
-  // Country
-  const res = await fetch(
-    `https://restcountries.eu/rest/v2/name/${dataGeo.country}`
-  );
-  const data = await res.json();
-  country1(data[0]);
+    // Country
+    const res = await fetch(
+      `https://restcountries.eu/rest/v2/name/${dataGeo.country}`
+    );
+    if (!res.ok) throw new Error('Country not found');
+    const data = await res.json();
+    country1(data[0]);
+  } catch (err) {
+    console.error(`${err} 💥💥💥`);
+    renderError(`${err.message}`);
+  }
 };
 whereAmI();
+
+// try {
+//   let y = 1;
+//   const x = 2;
+//   x = 3;
+// } catch (err) {
+//   console.log(err);
+// }
