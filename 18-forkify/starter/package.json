@@ -1,15 +1,20 @@
 {
+  "devDependencies": {
+    "@parcel/resolver-default": "^2.15.1",
+    "@parcel/transformer-sass": "^2.15.1",
+    "parcel": "^2.15.1"
+  },
   "name": "forkify",
   "version": "1.0.0",
-  "description": "Recipe App",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html"
   },
   "author": "Song Martins",
   "license": "ISC",
-  "devDependencies": {
-    "@parcel/transformer-sass": "^2.15.1",
-    "parcel": "^2.15.1"
+  "description": "",
+  "dependencies": {
+    "core-js": "^3.42.0",
+    "regenerator-runtime": "^0.14.1"
   }
 }
