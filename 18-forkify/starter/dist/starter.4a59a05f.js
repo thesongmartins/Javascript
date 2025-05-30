@@ -695,7 +695,7 @@ const controlRecipes = async function() {
         // 2) Rendering Recipe
         (0, _recipeViewsDefault.default).render(_model.state.recipe);
     } catch (err) {
-        console.log(err);
+        (0, _recipeViewsDefault.default).renderError();
     }
 };
 // showRecipe();
@@ -2573,11 +2573,11 @@ try {
 }
 
 },{}],"3QBkH":[function(require,module,exports,__globalThis) {
+// import { async } from 'regenerator-runtime';
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "state", ()=>state);
 parcelHelpers.export(exports, "loadRecipe", ()=>loadRecipe);
-var _regeneratorRuntime = require("regenerator-runtime");
 var _config = require("./config");
 var _helpers = require("./helpers");
 const state = {
@@ -2600,11 +2600,11 @@ const loadRecipe = async function(id) {
         };
         console.log(state.recipe);
     } catch (err) {
-        console.error(`${err}`);
+        throw err;
     }
 };
 
-},{"regenerator-runtime":"f6ot0","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","./config":"2hPh4","./helpers":"7nL9P"}],"2hPh4":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","./config":"2hPh4","./helpers":"7nL9P"}],"2hPh4":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "API_URL", ()=>API_URL);
@@ -2661,6 +2661,8 @@ function toFraction(decimal) {
 class RecipeView {
     #parentElement = document.querySelector('.recipe');
     #data;
+    #errorMessage = `We could not find that recipe. Please try another one!`;
+    #message = '';
     render(data) {
         this.#data = data;
         const markup = this.#generateMarkup();
@@ -2670,7 +2672,7 @@ class RecipeView {
     #clear() {
         this.#parentElement.innerHTML = '';
     }
-    renderSpinner = ()=>{
+    renderSpinner() {
         const markup = `
    <div class="spinner">
           <svg>
@@ -2678,9 +2680,33 @@ class RecipeView {
           </svg>
         </div>
   `;
-        this.#parentElement.innerHTML = '';
+        this.#clear;
         this.#parentElement.insertAdjacentHTML('afterbegin', markup);
-    };
+    }
+    renderError(message = this.#errorMessage) {
+        const markup = `< <div class="error">
+            <div>
+              <svg>
+                <use href="${(0, _iconsSvgDefault.default)}#icon-alert-triangle"></use>
+              </svg>
+            </div>
+            <p>${message}</p>
+          </div> `;
+        this.#clear;
+        this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+    }
+    renderMessage(message = this.#message) {
+        const markup = `< <div class="message">
+            <div>
+              <svg>
+                <use href="${(0, _iconsSvgDefault.default)}#icon-smile"></use>
+              </svg>
+            </div>
+            <p>${message}</p>
+          </div> `;
+        this.#clear;
+        this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+    }
     addHandlerRender(handler) {
         [
             'hashchange',
