@@ -1,17 +1,31 @@
 import icons from 'url:../../img/icons.svg';
-import { Fraction } from 'fractional';
-console.log(Fraction);
+// import { Fraction } from 'fractional';
+// console.log(Fraction);
+
+function toFraction(decimal) {
+  if (!decimal) return '';
+  const tolerance = 1.0e-6;
+  let numerator = 1;
+  let denominator = 1;
+  let fraction = numerator / denominator;
+  while (Math.abs(fraction - decimal) > tolerance) {
+    if (fraction < decimal) numerator++;
+    else denominator++;
+    fraction = numerator / denominator;
+  }
+  return `${numerator}/${denominator}`;
+}
 
 class RecipeView {
   #parentElement = document.querySelector('.recipe');
   #data;
 
   render(data) {
-    this.data = data;
+    this.#data = data;
     const markup = this.#generateMarkup();
 
     this.#clear();
-    this.#parentElement.insertAdjacentHTML('afterbegin', ecipeContainermarkup);
+    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
   #clear() {
@@ -31,7 +45,8 @@ class RecipeView {
   };
 
   #generateMarkup() {
-    console.log(this.#data);
+    console.log('Ingredients:', this.#data.ingredients);
+
     return `
         <figure class="recipe__fig">
           <img src="${this.#data.image}" alt="${
@@ -125,7 +140,7 @@ class RecipeView {
                 <use href="${icons}#icon-check"></use>
               </svg>
               <div class="recipe__quantity">${
-                ing.quantity ? new Fraction(ing.quantity).toString() : ''
+                ing.quantity ? toFraction(ing.quantity).toString() : ''
               }</div>
               <div class="recipe__description">
                 <span class="recipe__unit">${ing.unit}</span>

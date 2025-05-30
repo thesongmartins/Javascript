@@ -20,7 +20,7 @@ const timeout = function (s) {
 
 const controlRecipes = async function () {
   try {
-    const id = window.location.hash.slice(1);
+    const id = window.location.hash.slice(1) || '5ed6604591c37cdc054bc886';
     console.log(id);
 
     if (!id) return;
@@ -30,7 +30,6 @@ const controlRecipes = async function () {
     await model.loadRecipe(id);
 
     // 2) Rendering Recipe
-
     recipeView.render(model.state.recipe);
   } catch (err) {
     console.log(err);
