@@ -699,10 +699,10 @@ const controlRecipes = async function() {
     }
 };
 // showRecipe();
-[
-    'hashchange',
-    'load'
-].forEach((e)=>window.addEventListener(e, controlRecipes));
+const init = function() {
+    (0, _recipeViewsDefault.default).addHandlerRender(controlRecipes);
+};
+init();
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","core-js/modules/web.immediate.js":"bzsBv","regenerator-runtime/runtime":"f6ot0","./model":"3QBkH","./views/recipeViews":"eC0AB"}],"jnFvT":[function(require,module,exports,__globalThis) {
 exports.interopDefault = function(a) {
@@ -2681,6 +2681,12 @@ class RecipeView {
         this.#parentElement.innerHTML = '';
         this.#parentElement.insertAdjacentHTML('afterbegin', markup);
     };
+    addHandlerRender(handler) {
+        [
+            'hashchange',
+            'load'
+        ].forEach((e)=>window.addEventListener(e, handler));
+    }
     #generateMarkup() {
         console.log('Ingredients:', this.#data.ingredients);
         return `
